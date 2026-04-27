@@ -1,0 +1,137 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba($white, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid $border;
+
+  &__container {
+    @include flex-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    height: 64px;
+  }
+
+  &__logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: $primary;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  &__nav {
+    @include flex-center;
+    gap: $spacing-lg;
+  }
+
+  &__nav-link {
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $accent;
+      transition: width 0.2s ease;
+    }
+
+    &:hover {
+      color: $primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__cta {
+    background: $primary;
+    color: $white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    letter-spacing: -0.2px;
+
+    &:hover {
+      background: $accent;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: $primary;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-md $spacing-lg $spacing-lg;
+    border-top: 1px solid $border;
+    background: rgba($white, 0.95);
+  }
+
+  &__mobile-link {
+    color: $text-secondary;
+    text-decoration: none;
+    padding: 14px 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid $border;
+    transition: color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  @include responsive(tablet) {
+    &__nav,
+    &__cta {
+      display: none;
+    }
+
+    &__burger {
+      display: flex;
+    }
+  }
+}
