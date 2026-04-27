@@ -1,0 +1,135 @@
+<section class="contact" id="contact">
+  <div class="contact__container">
+
+    <div class="contact__left">
+      <span class="contact__badge">Связаться с нами</span>
+      <h2 class="contact__title">Запишитесь на пробное занятие</h2>
+      <p class="contact__subtitle">
+        Оставьте заявку и мы свяжемся с вами в течение 30 минут
+      </p>
+
+      <div class="contact__info">
+        <div class="contact__info-item">
+          <span class="contact__info-icon">📍</span>
+          <div>
+            <p class="contact__info-label">Адрес</p>
+            <p class="contact__info-value">ул. Спортивная 15, Бишкек</p>
+          </div>
+        </div>
+        <div class="contact__info-item">
+          <span class="contact__info-icon">📞</span>
+          <div>
+            <p class="contact__info-label">Телефон</p>
+            <p class="contact__info-value">+996 700 123 456</p>
+          </div>
+        </div>
+        <div class="contact__info-item">
+          <span class="contact__info-icon">⏰</span>
+          <div>
+            <p class="contact__info-label">Время работы</p>
+            <p class="contact__info-value">Ежедневно 7:00 — 22:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact__right">
+
+      <div class="contact__success" *ngIf="isSubmitted()">
+        <span class="contact__success-icon">✅</span>
+        <h3>Заявка отправлена!</h3>
+        <p>Мы свяжемся с вами в течение 30 минут</p>
+        <button class="contact__success-btn" (click)="isSubmitted.set(false)">
+          Отправить ещё
+        </button>
+      </div>
+
+
+      <form
+        class="contact__form"
+        *ngIf="!isSubmitted()"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+
+        <div class="contact__field">
+          <label class="contact__label">Ваше имя *</label>
+          <input
+            class="contact__input"
+            [class.contact__input--error]="showError('name')"
+            type="text"
+            placeholder="Санжар"
+            formControlName="name" />
+          <span class="contact__error" *ngIf="showError('name')">
+            <ng-container *ngIf="f.name.errors?.['required']">Введите имя</ng-container>
+            <ng-container *ngIf="f.name.errors?.['minlength']">Минимум 2 символа</ng-container>
+          </span>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label">Телефон *</label>
+          <input
+            class="contact__input"
+            [class.contact__input--error]="showError('phone')"
+            type="tel"
+            placeholder="+996 700 000 000"
+            formControlName="phone" />
+          <span class="contact__error" *ngIf="showError('phone')">
+            <ng-container *ngIf="f.phone.errors?.['required']">Введите телефон</ng-container>
+            <ng-container *ngIf="f.phone.errors?.['pattern']">Неверный формат номера</ng-container>
+          </span>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label">Email *</label>
+          <input
+            class="contact__input"
+            [class.contact__input--error]="showError('email')"
+            type="email"
+            placeholder="sanzhar@gmail.com"
+            formControlName="email" />
+          <span class="contact__error" *ngIf="showError('email')">
+            <ng-container *ngIf="f.email.errors?.['required']">Введите email</ng-container>
+            <ng-container *ngIf="f.email.errors?.['email']">Неверный формат email</ng-container>
+          </span>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label">Услуга *</label>
+          <select
+            class="contact__input contact__select"
+            [class.contact__input--error]="showError('service')"
+            formControlName="service">
+            <option value="">Выберите услугу</option>
+            <option value="swimming">Спортивное плавание</option>
+            <option value="aquafitness">Аквафитнес</option>
+            <option value="aquayoga">Аквайога</option>
+            <option value="kids">Детское плавание</option>
+            <option value="polo">Водное поло</option>
+            <option value="free">Свободное плавание</option>
+          </select>
+          <span class="contact__error" *ngIf="showError('service')">
+            Выберите услугу
+          </span>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label">Сообщение</label>
+          <textarea
+            class="contact__input contact__textarea"
+            placeholder="Любые вопросы или пожелания..."
+            formControlName="message"
+            rows="3"></textarea>
+        </div>
+
+        <button
+          class="contact__submit"
+          type="submit"
+          [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Отправляем...' : 'Записаться' }}
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>

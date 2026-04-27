@@ -4,11 +4,12 @@ import {HeaderComponent} from './layout/header/header.component';
 import {HeroComponent} from './features/hero/hero.component';
 import {ServicesComponent} from './features/services/services.component';
 import {PricingComponent} from './features/pricing/pricing.component';
+import {ContactComponent} from './features/contact/contact.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, PricingComponent],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, PricingComponent, ContactComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
