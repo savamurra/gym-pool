@@ -1,0 +1,29 @@
+<div class="pricing-card" [class.pricing-card--popular]="plan().isPopular">
+
+  <div class="pricing-card__badge" *ngIf="plan().isPopular">
+    ⭐ Популярный
+  </div>
+
+  <div class="pricing-card__header">
+    <h3 class="pricing-card__title">{{ plan().title }}</h3>
+    <div class="pricing-card__price">
+      <span class="pricing-card__amount">{{ plan().price | number }}</span>
+      <span class="pricing-card__currency">₸</span>
+    </div>
+    <span class="pricing-card__period">в {{ plan().period }}</span>
+  </div>
+
+  <ul class="pricing-card__features">
+    <li
+      *ngFor="let feature of plan().features"
+      class="pricing-card__feature">
+      <span class="pricing-card__check">✓</span>
+      {{ feature }}
+    </li>
+  </ul>
+
+  <a href="#contact" class="pricing-card__btn">
+    Выбрать план
+  </a>
+
+</div>

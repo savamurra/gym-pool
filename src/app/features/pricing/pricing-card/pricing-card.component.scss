@@ -1,0 +1,153 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.pricing-card {
+  padding: $spacing-lg;
+  border-radius: 20px;
+  border: 1px solid $border;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  &--popular {
+    border-color: $accent;
+    background: $primary;
+
+    .pricing-card__title,
+    .pricing-card__amount,
+    .pricing-card__currency,
+    .pricing-card__feature {
+      color: $white;
+    }
+
+    .pricing-card__period {
+      color: rgba($white, 0.6);
+    }
+
+    .pricing-card__check {
+      background: rgba($white, 0.15);
+      color: $white;
+    }
+
+    .pricing-card__btn {
+      background: $white;
+      color: $primary;
+
+      &:hover {
+        background: $accent;
+        color: $white;
+      }
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $accent;
+    color: $white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__header {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid rgba($border, 0.5);
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: $spacing-md;
+    letter-spacing: -0.3px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  &__amount {
+    font-size: 42px;
+    font-weight: 800;
+    color: $primary;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  &__currency {
+    font-size: 20px;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 6px;
+  }
+
+  &__period {
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  &__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    flex: 1;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 500;
+  }
+
+  &__check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba($accent, 0.1);
+    color: $accent;
+    @include flex-center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    display: block;
+    text-align: center;
+    background: $primary;
+    color: $white;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    margin-top: auto;
+
+    &:hover {
+      background: $accent;
+      transform: translateY(-1px);
+    }
+  }
+}

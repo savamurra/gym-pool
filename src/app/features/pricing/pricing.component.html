@@ -1,0 +1,19 @@
+<section class="pricing" id="pricing">
+  <div class="pricing__container">
+
+    <div class="pricing__header">
+      <span class="pricing__badge">Прозрачные цены</span>
+      <h2 class="pricing__title">Выбери свой план</h2>
+      <p class="pricing__subtitle">
+        Никаких скрытых платежей — только честные цены и максимум пользы
+      </p>
+    </div>
+
+    <div class="pricing__grid">
+      <app-pricing-card
+        *ngFor="let plan of plans()"
+        [plan]="plan" />
+    </div>
+
+  </div>
+</section>
