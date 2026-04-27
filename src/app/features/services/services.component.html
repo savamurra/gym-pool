@@ -1,0 +1,36 @@
+<section class="services" id="services">
+  <div class="services__container">
+
+    <div class="services__header">
+      <span class="services__badge">Что мы предлагаем</span>
+      <h2 class="services__title">Наши услуги</h2>
+      <p class="services__subtitle">
+        Выбери подходящий формат тренировок и начни свой путь к здоровью
+      </p>
+    </div>
+
+
+    <div class="services__grid">
+      <div
+        *ngFor="let service of services()"
+        class="services__card"
+        [class.services__card--active]="activeId() === service.id"
+        (mouseenter)="setActive(service.id)"
+        (mouseleave)="clearActive()">
+
+        <div class="services__card-icon">{{ service.icon }}</div>
+
+        <h3 class="services__card-title">{{ service.title }}</h3>
+
+        <p class="services__card-description">{{ service.description }}</p>
+
+        <div class="services__card-footer">
+          <span class="services__card-duration">⏱ {{ service.duration }}</span>
+          <span class="services__card-price">от {{ service.price }} ₸</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
