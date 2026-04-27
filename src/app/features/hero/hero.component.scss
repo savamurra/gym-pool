@@ -1,0 +1,206 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.hero {
+  min-height: 100vh;
+  padding-top: 64px;
+  background: $light;
+  display: flex;
+  align-items: center;
+
+  &__container {
+    @include flex-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-xxl $spacing-lg;
+    gap: $spacing-xl;
+
+    @include responsive(tablet) {
+      flex-direction: column;
+      padding: $spacing-xl $spacing-lg;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 560px;
+  }
+
+  &__badge {
+    display: inline-block;
+    background: rgba($accent, 0.08);
+    color: $accent;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: $spacing-lg;
+    border: 1px solid rgba($accent, 0.2);
+  }
+
+  &__title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: $primary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title-accent {
+    color: $accent;
+  }
+
+  &__description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: $text-secondary;
+    margin-bottom: $spacing-lg;
+    max-width: 480px;
+
+    @include responsive(tablet) {
+      margin: 0 auto $spacing-lg;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+
+    @include responsive(tablet) {
+      justify-content: center;
+    }
+
+    @include responsive(mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__btn-primary {
+    background: $primary;
+    color: $white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $accent;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__btn-secondary {
+    color: $text-secondary;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    @include responsive(tablet) {
+      justify-content: center;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: $primary;
+  }
+
+  &__stat-label {
+    font-size: 13px;
+    color: $text-secondary;
+    font-weight: 500;
+  }
+
+  &__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: $border;
+  }
+
+  &__visual {
+    flex: 1;
+    @include flex-center;
+
+    @include responsive(tablet) {
+      width: 100%;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  &__image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, rgba($accent, 0.1), rgba($accent, 0.05));
+    border-radius: 24px;
+    @include flex-center;
+    border: 1px solid rgba($accent, 0.15);
+    font-size: 120px;
+  }
+
+
+  &__card {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: $white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid $border;
+
+    @include responsive(mobile) {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -30px;
+      white-space: nowrap;
+    }
+  }
+
+  &__card-icon {
+    font-size: 24px;
+  }
+
+  &__card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__card-subtitle {
+    font-size: 12px;
+    color: $text-secondary;
+  }
+}
