@@ -1,0 +1,51 @@
+<section class="about" id="about">
+  <div class="about__container">
+
+    <div class="about__visual">
+      <div class="about__image-main">
+        <span>🏊‍♂️</span>
+      </div>
+      <div class="about__floating-card">
+        <span class="about__floating-icon">🏆</span>
+        <div>
+          <p class="about__floating-title">Лучший клуб 2024</p>
+          <p class="about__floating-subtitle">по версии SportLife KG</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__content">
+
+      <span class="about__badge">О нас</span>
+
+      <h2 class="about__title">
+        Мы создаём среду <br>
+        <span class="about__title-accent">для чемпионов</span>
+      </h2>
+
+      <p class="about__description">
+        AquaGym — это современный спортивный комплекс в Бишкеке,
+        который открылся в 2014 году. За 10 лет мы помогли более
+        2000 клиентам достичь своих спортивных целей.
+      </p>
+
+      <p class="about__description">
+        Наша миссия — сделать профессиональные тренировки доступными
+        для каждого, независимо от уровня подготовки.
+      </p>
+      <div class="about__advantages">
+        <div
+          *ngFor="let item of advantages()"
+          class="about__advantage">
+          <span class="about__advantage-icon">{{ item.icon }}</span>
+          <div>
+            <h4 class="about__advantage-title">{{ item.title }}</h4>
+            <p class="about__advantage-description">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

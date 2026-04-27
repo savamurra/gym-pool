@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Pricing} from '../../../core/services/pool.service';
+import {Pricing} from '../../../core/models/pool.models';
 
 @Component({
   selector: 'app-pricing-card',

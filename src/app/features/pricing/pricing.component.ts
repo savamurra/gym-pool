@@ -1,7 +1,8 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PoolDataService, Pricing} from '../../core/services/pool.service';
+import {PoolDataService} from '../../core/services/pool.service';
 import {PricingCardComponent} from './pricing-card/pricing-card.component';
+import {Pricing} from '../../core/models/pool.models';
 
 @Component({
   selector: 'app-pricing',

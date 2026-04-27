@@ -1,22 +1,6 @@
 import { Injectable, signal } from '@angular/core';
+import {PoolService, Pricing} from '../models/pool.models';
 
-export interface PoolService {
-  id: number
-  icon: string
-  title: string
-  description: string
-  duration: string
-  price: number
-}
-
-export interface Pricing {
-  id: number
-  title: string
-  price: number
-  period: string
-  features: string[]
-  isPopular: boolean
-}
 
 @Injectable({
   providedIn: 'root'

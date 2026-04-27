@@ -1,0 +1,138 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.about {
+  padding: $spacing-xxl $spacing-lg;
+  background: $light;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+
+    @include responsive(tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__visual {
+    position: relative;
+
+    @include responsive(tablet) {
+      display: none;
+    }
+  }
+
+  &__image-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, rgba($accent, 0.15), rgba($accent, 0.05));
+    border-radius: 24px;
+    @include flex-center;
+    font-size: 120px;
+    border: 1px solid rgba($accent, 0.15);
+  }
+
+  &__floating-card {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: $white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid $border;
+  }
+
+  &__floating-icon {
+    font-size: 28px;
+  }
+
+  &__floating-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__floating-subtitle {
+    font-size: 12px;
+    color: $text-secondary;
+  }
+
+  &__badge {
+    display: inline-block;
+    background: rgba($accent, 0.08);
+    color: $accent;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: $spacing-md;
+    border: 1px solid rgba($accent, 0.2);
+  }
+
+  &__title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: $primary;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+  }
+
+  &__title-accent {
+    color: $accent;
+  }
+
+  &__description {
+    font-size: 16px;
+    color: $text-secondary;
+    line-height: 1.7;
+    margin-bottom: $spacing-md;
+    max-width: 480px;
+  }
+
+  &__advantages {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+  }
+
+  &__advantage {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+
+  &__advantage-icon {
+    font-size: 28px;
+    width: 52px;
+    height: 52px;
+    background: $white;
+    border-radius: 14px;
+    @include flex-center;
+    flex-shrink: 0;
+    border: 1px solid $border;
+  }
+
+  &__advantage-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+
+  &__advantage-description {
+    font-size: 14px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+}

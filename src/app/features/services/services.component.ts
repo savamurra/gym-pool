@@ -1,6 +1,7 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PoolDataService, PoolService} from '../../core/services/pool.service';
+import {PoolDataService, } from '../../core/services/pool.service';
+import {PoolService} from '../../core/models/pool.models';
 
 @Component({
   selector: 'app-services',
