@@ -1,0 +1,76 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.gallery-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid $border;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: $white;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+
+    .gallery-card__overlay {
+      opacity: 1;
+    }
+
+    .gallery-card__emoji {
+      transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    position: relative;
+    aspect-ratio: 4/3;
+    max-width: 380px;
+    overflow: hidden;
+    background: $light;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &__img {
+    transform: scale(1.05)
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba($accent, 0.2);
+    @include flex-center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &__zoom {
+    font-size: 32px;
+  }
+
+  &__info {
+    padding: $spacing-md;
+  }
+
+  &__category {
+    font-size: 11px;
+    font-weight: 600;
+    color: $accent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary;
+    margin-top: 4px;
+    letter-spacing: -0.2px;
+  }
+}

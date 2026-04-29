@@ -1,0 +1,17 @@
+<div class="gallery-card" (click)="onCardClick()">
+  <div class="gallery-card__image">
+    <span class="gallery-card__emoji">{{ image().image}}</span>
+    <img
+      [ngSrc]="image().image"
+      [alt]="image().title"
+      fill
+      class="gallery-card__img" />
+    <div class="gallery-card__overlay">
+      <span class="gallery-card__zoom">🔍</span>
+    </div>
+  </div>
+  <div class="gallery-card__info">
+    <span class="gallery-card__category">{{ image().category }}</span>
+    <h4 class="gallery-card__title">{{ image().title }}</h4>
+  </div>
+</div>

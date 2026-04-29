@@ -22,3 +22,10 @@ export interface Advantage {
   title: string
   description: string
 }
+
+export interface GalleryImage {
+  id: number
+  image: string
+  title: string
+  category: string
+}

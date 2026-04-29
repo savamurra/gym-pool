@@ -1,0 +1,45 @@
+<section class="gallery" id="gallery">
+  <div class="gallery__container">
+
+    <div class="gallery__header">
+      <span class="gallery__badge">Наш комплекс</span>
+      <h2 class="gallery__title">Галерея</h2>
+      <p class="gallery__subtitle">
+        Загляни к нам — убедись сам насколько у нас круто
+      </p>
+    </div>
+
+    <div class="gallery__grid">
+      <app-gallery-card
+        *ngFor="let image of images()"
+        [image]="image"
+        (imageClick)="openModal($event)" />
+    </div>
+
+  </div>
+
+
+  <div
+    class="gallery__modal"
+    *ngIf="selectedImage()"
+    (click)="closeModal()">
+    <div class="gallery__modal-content" (click)="$event.stopPropagation()">
+
+      <button class="gallery__modal-close" (click)="closeModal()">✕</button>
+
+      <div class="gallery__modal-image">
+        <img
+          [src]="selectedImage()?.image"
+          [alt]="selectedImage()?.title"/>
+      </div>
+      <div class="gallery__modal-info">
+        <span class="gallery__modal-category">
+          {{ selectedImage()?.category }}
+        </span>
+        <h3 class="gallery__modal-title">{{ selectedImage()?.title }}</h3>
+      </div>
+
+    </div>
+  </div>
+
+</section>
