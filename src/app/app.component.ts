@@ -7,11 +7,12 @@ import {PricingComponent} from './features/pricing/pricing.component';
 import {ContactComponent} from './features/contact/contact.component';
 import {AboutComponent} from './features/about/about.component';
 import {GalleryComponent} from './features/gallery/gallery.component';
+import {FooterComponent} from './layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, PricingComponent, ContactComponent, AboutComponent, GalleryComponent],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, PricingComponent, ContactComponent, AboutComponent, GalleryComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

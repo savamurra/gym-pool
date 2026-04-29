@@ -1,0 +1,130 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.footer {
+  background: $primary;
+  color: $white;
+  padding: $spacing-xl $spacing-lg $spacing-lg;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: $spacing-xl;
+    padding-bottom: $spacing-xl;
+    border-bottom: 1px solid rgba($white, 0.1);
+
+    @include responsive(tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: $white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: $spacing-md;
+    letter-spacing: -0.5px;
+  }
+
+  &__description {
+    font-size: 14px;
+    color: rgba($white, 0.6);
+    line-height: 1.6;
+    max-width: 280px;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__socials {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__social {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba($white, 0.08);
+    border: 1px solid rgba($white, 0.1);
+    @include flex-center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $accent;
+      border-color: $accent;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__nav-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__nav-link {
+    font-size: 14px;
+    color: rgba($white, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__contact-item {
+    font-size: 14px;
+    color: rgba($white, 0.6);
+    font-weight: 500;
+  }
+
+  &__bottom {
+    @include flex-between;
+    padding-top: $spacing-lg;
+
+    @include responsive(mobile) {
+      flex-direction: column;
+      gap: $spacing-sm;
+      text-align: center;
+    }
+  }
+
+  &__copy {
+    font-size: 13px;
+    color: rgba($white, 0.4);
+  }
+
+  &__made {
+    font-size: 13px;
+    color: rgba($white, 0.4);
+  }
+}

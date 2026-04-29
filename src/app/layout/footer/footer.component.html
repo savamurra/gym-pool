@@ -1,0 +1,53 @@
+<footer class="footer">
+  <div class="footer__container">
+
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <a href="#" class="footer__logo">🏊 AquaGym</a>
+        <p class="footer__description">
+          Современный спортивный комплекс с олимпийским бассейном в Бишкеке
+        </p>
+        <div class="footer__socials">
+          <a
+            *ngFor="let social of socials"
+            [href]="social.href"
+            class="footer__social"
+            [title]="social.label">
+            {{ social.icon }}
+          </a>
+        </div>
+      </div>
+
+
+      <div class="footer__nav">
+        <h4 class="footer__nav-title">Навигация</h4>
+        <a
+          *ngFor="let link of links"
+          [href]="link.href"
+          class="footer__nav-link">
+          {{ link.label }}
+        </a>
+      </div>
+
+      <div class="footer__contacts">
+        <h4 class="footer__nav-title">Контакты</h4>
+        <p class="footer__contact-item">📍 ул. Спортивная 15, Бишкек</p>
+        <p class="footer__contact-item">📞 +996 700 123 456</p>
+        <p class="footer__contact-item">✉️ info aquagym.kg</p>
+        <p class="footer__contact-item">⏰ Пн-Вс: 7:00 — 22:00</p>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        © {{ currentYear }} AquaGym. Все права защищены.
+      </p>
+      <p class="footer__made">
+        Сделано с 💙 в Бишкеке
+      </p>
+    </div>
+
+  </div>
+</footer>
