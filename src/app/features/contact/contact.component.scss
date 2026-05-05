@@ -158,8 +158,8 @@
   }
 
   &__submit {
-    background: $primary;
-    color: $white;
+    background: $accent;
+    color: $dark-3;
     padding: 14px;
     border-radius: 10px;
     border: none;
@@ -171,7 +171,7 @@
     margin-top: $spacing-sm;
 
     &:hover:not(:disabled) {
-      background: $accent;
+      background: lighten($accent, 10%);
       transform: translateY(-1px);
     }
 
