@@ -1,1 +1,52 @@
-<p>login works!</p>
+<div class="login">
+  <div class="login__card">
+
+    <div class="login__header">
+      <span class="login__logo">🏊 AquaGym</span>
+      <h1 class="login__title">Вход в систему</h1>
+      <p class="login__subtitle">Только для администраторов</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="login__field">
+        <label class="login__label">Email</label>
+        <input
+          class="login__input"
+          [class.login__input--error]="f.email.invalid && f.email.touched"
+          type="email"
+          placeholder="admin@aquagym.kg"
+          formControlName="email" />
+        <span class="login__error" *ngIf="f.email.invalid && f.email.touched">
+          Введите корректный email
+        </span>
+      </div>
+
+      <div class="login__field">
+        <label class="login__label">Пароль</label>
+        <input
+          class="login__input"
+          [class.login__input--error]="f.password.invalid && f.password.touched"
+          type="password"
+          placeholder="••••••••"
+          formControlName="password" />
+        <span class="login__error" *ngIf="f.password.invalid && f.password.touched">
+          Минимум 6 символов
+        </span>
+      </div>
+
+      <div class="login__firebase-error" *ngIf="authService.error()">
+        ⚠️ {{ authService.error() }}
+      </div>
+
+      <button
+        class="login__btn"
+        type="submit"
+        [disabled]="authService.isLoading()">
+        {{ authService.isLoading() ? 'Входим...' : 'Войти' }}
+      </button>
+
+    </form>
+
+  </div>
+</div>

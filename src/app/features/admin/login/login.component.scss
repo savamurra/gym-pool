@@ -1,0 +1,123 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.login {
+  min-height: 100vh;
+  background: $dark;
+  @include flex-center;
+  padding: $spacing-lg;
+
+  &__card {
+    background: $dark-2;
+    border: 1px solid $border;
+    border-radius: 24px;
+    padding: $spacing-xl;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: $white;
+    display: block;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    color: $white;
+    letter-spacing: -0.5px;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: $text-secondary;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: $spacing-md;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $white;
+  }
+
+  &__input {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid $border;
+    background: $dark-3;
+    font-size: 14px;
+    font-family: $font-main;
+    color: $white;
+    transition: all 0.2s ease;
+    outline: none;
+
+    &::placeholder {
+      color: $text-secondary;
+    }
+
+    &:focus {
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba($accent, 0.15);
+    }
+
+    &--error {
+      border-color: #ef4444;
+    }
+  }
+
+  &__error {
+    font-size: 12px;
+    color: #ef4444;
+  }
+
+  &__firebase-error {
+    background: rgba(#ef4444, 0.1);
+    border: 1px solid rgba(#ef4444, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    color: #ef4444;
+    margin-bottom: $spacing-md;
+    text-align: center;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: $accent;
+    color: $dark;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: $font-main;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: $spacing-sm;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
