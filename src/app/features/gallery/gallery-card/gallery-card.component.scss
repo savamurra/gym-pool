@@ -7,7 +7,7 @@
   border: 1px solid $border;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: $white;
+  background: $dark-3;
 
   &:hover {
     transform: translateY(-4px);
@@ -27,7 +27,7 @@
     aspect-ratio: 4/3;
     max-width: 380px;
     overflow: hidden;
-    background: $light;
+    background: $dark-2;
   }
 
   &__img {
@@ -69,7 +69,7 @@
   &__title {
     font-size: 14px;
     font-weight: 600;
-    color: $primary;
+    color: $white;
     margin-top: 4px;
     letter-spacing: -0.2px;
   }

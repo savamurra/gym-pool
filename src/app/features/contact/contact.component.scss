@@ -3,7 +3,7 @@
 
 .contact {
   padding: $spacing-xxl $spacing-lg;
-  background: $white;
+  background: $dark-2;
 
   &__container {
     max-width: 1200px;
@@ -63,7 +63,7 @@
     font-size: 24px;
     width: 48px;
     height: 48px;
-    background: $light;
+    background: $dark-3;
     border-radius: 12px;
     @include flex-center;
     flex-shrink: 0;
@@ -84,7 +84,7 @@
 
 
   &__right {
-    background: $light;
+    background: $dark-3;
     border-radius: 24px;
     padding: $spacing-lg;
     border: 1px solid $border;
@@ -112,10 +112,10 @@
     padding: 12px 16px;
     border-radius: 10px;
     border: 1px solid $border;
-    background: $white;
+    background: $dark-2;
     font-size: 14px;
     font-family: $font-main;
-    color: $primary;
+    color: $white;
     transition: all 0.2s ease;
     outline: none;
 
@@ -125,7 +125,7 @@
 
     &:focus {
       border-color: $accent;
-      box-shadow: 0 0 0 3px rgba($accent, 0.1);
+      box-shadow: 0 0 0 3px rgba($accent, 0.15);
     }
 
     &--error {
@@ -192,7 +192,7 @@
     h3 {
       font-size: 22px;
       font-weight: 700;
-      color: $primary;
+      color: $white;
     }
 
     p {

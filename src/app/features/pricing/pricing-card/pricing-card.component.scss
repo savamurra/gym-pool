@@ -4,8 +4,8 @@
 .pricing-card {
   padding: $spacing-lg;
   border-radius: 20px;
-  border: 1px solid $border;
-  background: $white;
+  background: $dark-3;
+  border-color: $border;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -17,32 +17,31 @@
   }
 
   &--popular {
+    background: $accent;
     border-color: $accent;
-    background: $primary;
 
     .pricing-card__title,
     .pricing-card__amount,
     .pricing-card__currency,
     .pricing-card__feature {
-      color: $white;
+      color: $dark;
     }
 
     .pricing-card__period {
-      color: rgba($white, 0.6);
+      color: rgba($dark, 0.6);
     }
 
     .pricing-card__check {
-      background: rgba($white, 0.15);
-      color: $white;
+      background: rgba($dark, 0.15);
+      color: $dark;
     }
 
     .pricing-card__btn {
-      background: $white;
-      color: $primary;
+      background: $dark;
+      color: $white;
 
       &:hover {
-        background: $accent;
-        color: $white;
+        background: darken($dark, 5%);
       }
     }
   }
@@ -70,7 +69,7 @@
   &__title {
     font-size: 18px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
     margin-bottom: $spacing-md;
     letter-spacing: -0.3px;
   }
@@ -85,7 +84,7 @@
   &__amount {
     font-size: 42px;
     font-weight: 800;
-    color: $primary;
+    color: $white;
     letter-spacing: -2px;
     line-height: 1;
   }
@@ -93,7 +92,7 @@
   &__currency {
     font-size: 20px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
     margin-bottom: 6px;
   }
 
@@ -124,7 +123,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba($accent, 0.1);
+    background: rgba($accent, 0.15);
     color: $accent;
     @include flex-center;
     font-size: 11px;
@@ -135,7 +134,8 @@
   &__btn {
     display: block;
     text-align: center;
-    background: $primary;
+    background: rgba($white, 0.1);
+    border: 1px solid $border;
     color: $white;
     padding: 14px;
     border-radius: 10px;
@@ -147,6 +147,7 @@
 
     &:hover {
       background: $accent;
+      color: $dark;
       transform: translateY(-1px);
     }
   }

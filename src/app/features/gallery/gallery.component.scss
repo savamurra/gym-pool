@@ -3,7 +3,7 @@
 
 .gallery {
   padding: $spacing-xxl $spacing-lg;
-  background: $white;
+  background: $dark;
 
   &__container {
     max-width: 1200px;
@@ -61,7 +61,7 @@
   &__modal {
     position: fixed;
     inset: 0;
-    background: rgba($dark, 0.8);
+    background: rgba($dark, 0.9);
     backdrop-filter: blur(8px);
     @include flex-center;
     z-index: 2000;
@@ -69,7 +69,7 @@
   }
 
   &__modal-content {
-    background: $white;
+    background: $dark-2;
     border-radius: 24px;
     max-width: 480px;
     width: 100%;
@@ -85,7 +85,7 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid $border;
-    background: $white;
+    background: $dark-3;
     cursor: pointer;
     @include flex-center;
     font-size: 14px;
@@ -94,8 +94,8 @@
     z-index: 1;
 
     &:hover {
-      background: $light;
-      color: $primary;
+      background: $dark-2;
+      color: $white;
     }
   }
 
@@ -113,6 +113,7 @@
 
   &__modal-info {
     padding: $spacing-lg;
+    background: $dark-2;
   }
 
   &__modal-category {
@@ -126,7 +127,7 @@
   &__modal-title {
     font-size: 22px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
     letter-spacing: -0.5px;
     margin-top: $spacing-sm;
   }

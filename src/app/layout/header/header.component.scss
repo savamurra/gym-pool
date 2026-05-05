@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba($white, 0.8);
+  background: rgba($dark, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid $border;
@@ -23,7 +23,7 @@
   &__logo {
     font-size: 18px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
     text-decoration: none;
     letter-spacing: -0.5px;
   }
@@ -41,7 +41,6 @@
     transition: color 0.2s ease;
     position: relative;
 
-
     &::after {
       content: '';
       position: absolute;
@@ -54,7 +53,7 @@
     }
 
     &:hover {
-      color: $primary;
+      color: $white;
 
       &::after {
         width: 100%;
@@ -63,18 +62,17 @@
   }
 
   &__cta {
-    background: $primary;
-    color: $white;
+    background: $accent;
+    color: $dark;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     transition: all 0.2s ease;
-    letter-spacing: -0.2px;
 
     &:hover {
-      background: $accent;
+      background: lighten($accent, 10%);
       transform: translateY(-1px);
     }
   }
@@ -92,7 +90,7 @@
       display: block;
       width: 22px;
       height: 1.5px;
-      background: $primary;
+      background: $white;
       border-radius: 2px;
       transition: all 0.2s ease;
     }
@@ -103,7 +101,7 @@
     flex-direction: column;
     padding: $spacing-md $spacing-lg $spacing-lg;
     border-top: 1px solid $border;
-    background: rgba($white, 0.95);
+    background: rgba($dark, 0.95);
   }
 
   &__mobile-link {
@@ -120,7 +118,7 @@
     }
 
     &:hover {
-      color: $primary;
+      color: $white;
     }
   }
 

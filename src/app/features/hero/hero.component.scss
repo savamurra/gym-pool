@@ -4,9 +4,34 @@
 .hero {
   min-height: 100vh;
   padding-top: 64px;
-  background: $light;
+  background: $dark;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  // Фоновый градиент — эффект глубины воды
+  &::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($accent, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba($accent-dark, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
   &__container {
     @include flex-between;
@@ -14,6 +39,8 @@
     margin: 0 auto;
     padding: $spacing-xxl $spacing-lg;
     gap: $spacing-xl;
+    position: relative;
+    z-index: 1;
 
     @include responsive(tablet) {
       flex-direction: column;
@@ -29,7 +56,7 @@
 
   &__badge {
     display: inline-block;
-    background: rgba($accent, 0.08);
+    background: rgba($accent, 0.1);
     color: $accent;
     padding: 6px 14px;
     border-radius: 20px;
@@ -40,11 +67,11 @@
   }
 
   &__title {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    color: $primary;
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    color: $white;
     margin-bottom: $spacing-md;
   }
 
@@ -80,17 +107,17 @@
   }
 
   &__btn-primary {
-    background: $primary;
-    color: $white;
+    background: $accent;
+    color: $dark;
     padding: 14px 28px;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
     transition: all 0.2s ease;
 
     &:hover {
-      background: $accent;
+      background: lighten($accent, 10%);
       transform: translateY(-2px);
     }
   }
@@ -103,7 +130,7 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: $primary;
+      color: $white;
     }
   }
 
@@ -117,17 +144,12 @@
     }
   }
 
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
   &__stat-number {
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 900;
     letter-spacing: -1px;
-    color: $primary;
+    color: $white;
+    display: block;
   }
 
   &__stat-label {
@@ -160,25 +182,25 @@
   &__image-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, rgba($accent, 0.1), rgba($accent, 0.05));
+    background: linear-gradient(135deg, rgba($accent, 0.15), rgba($dark-3, 0.8));
     border-radius: 24px;
     @include flex-center;
-    border: 1px solid rgba($accent, 0.15);
+    border: 1px solid $border;
     font-size: 120px;
+    overflow: hidden;
   }
-
 
   &__card {
     position: absolute;
     bottom: -20px;
     left: -20px;
-    background: $white;
+    background: $dark-2;
     border-radius: 16px;
     padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     border: 1px solid $border;
 
     @include responsive(mobile) {
@@ -196,7 +218,7 @@
   &__card-title {
     font-size: 14px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
   }
 
   &__card-subtitle {

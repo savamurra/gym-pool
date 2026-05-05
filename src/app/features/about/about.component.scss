@@ -3,7 +3,7 @@
 
 .about {
   padding: $spacing-xxl $spacing-lg;
-  background: $light;
+  background: $dark-2;
 
   &__container {
     max-width: 1200px;
@@ -40,7 +40,7 @@
     position: absolute;
     bottom: -20px;
     right: -20px;
-    background: $white;
+    background: $dark-3;
     border-radius: 16px;
     padding: 16px 20px;
     display: flex;
@@ -52,6 +52,7 @@
 
   &__floating-icon {
     font-size: 28px;
+    background: $dark-3;
   }
 
   &__floating-title {

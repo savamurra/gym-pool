@@ -29,3 +29,5 @@ export interface GalleryImage {
   title: string
   category: string
 }
+
+export type Theme = 'dark' | 'light'

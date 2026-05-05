@@ -3,7 +3,7 @@
 
 .services {
   padding: $spacing-xxl $spacing-lg;
-  background: $white;
+  background: $dark;
 
   &__container {
     max-width: 1200px;
@@ -61,7 +61,7 @@
     padding: $spacing-lg;
     border-radius: 16px;
     border: 1px solid $border;
-    background: $white;
+    background: $dark-3;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -69,7 +69,7 @@
 
     &--active {
       border-color: $accent;
-      box-shadow: 0 8px 30px rgba($accent, 0.12);
+      box-shadow: 0 8px 30px rgba($accent, 0.15);
       transform: translateY(-4px);
     }
   }
@@ -82,7 +82,7 @@
   &__card-title {
     font-size: 17px;
     font-weight: 700;
-    color: $primary;
+    color: $white;
     letter-spacing: -0.3px;
     margin-bottom: $spacing-sm;
   }
@@ -97,7 +97,7 @@
   &__card-footer {
     @include flex-between;
     padding-top: $spacing-md;
-    border-top: 1px solid $border;
+    border-top: $border;
     margin-top: auto;
   }
 

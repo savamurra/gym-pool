@@ -1,20 +1,22 @@
-// Colors
-$primary: #0a0a0a;
-$secondary: #141414;
-$accent: #6366f1;        // индиго — современный акцент
-$accent-light: #818cf8;
-$dark: #0a0a0a;
-$light: #fafafa;
+// Colors — тёмная тема
+$primary: #ffffff;
+$secondary: #c8d6e5;
+$accent: #4fc3f7;
+$accent-dark: #0288d1;
+$dark: #050d18;
+$dark-2: #0a1628;
+$dark-3: #0f2040;
 $white: #ffffff;
-$text-primary: #0a0a0a;
-$text-secondary: #6b7280;
-$border: #e5e7eb;
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.6);
+$border: rgba(255, 255, 255, 0.08);
+$light: #0a1628;
 
-// Typography
+
 $font-main: 'Inter', sans-serif;
 $font-size-base: 16px;
 
-// Spacing
+
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
@@ -22,7 +24,7 @@ $spacing-lg: 32px;
 $spacing-xl: 64px;
 $spacing-xxl: 120px;
 
-// Breakpoints
+
 $mobile: 480px;
 $tablet: 768px;
 $desktop: 1200px;
