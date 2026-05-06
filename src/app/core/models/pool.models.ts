@@ -31,3 +31,16 @@ export interface GalleryImage {
 }
 
 export type Theme = 'dark' | 'light'
+
+export type BookingStatus = 'processing' | 'confirmed' | 'cancelled' | 'new'
+
+export interface Booking {
+  id?: string
+  name: string
+  phone: string
+  email: string
+  service: string
+  message: string
+  status: BookingStatus
+  createdAt: Date
+}

@@ -1,1 +1,54 @@
-<p>admin-shell works!</p>
+<div class="admin" [class.admin--collapsed]="!isSidebarOpen()">
+
+  <aside class="admin__sidebar">
+
+    <div class="admin__sidebar-header">
+      <span class="admin__logo" *ngIf="isSidebarOpen()">🏊 AquaGym</span>
+      <button class="admin__toggle" (click)="toggleSidebar()">
+        {{ isSidebarOpen() ? '◀' : '▶' }}
+      </button>
+    </div>
+
+    <nav class="admin__nav">
+      <a
+      *ngFor="let item of navItems"
+      [routerLink]="item.route"
+      routerLinkActive="admin__nav-item--active"
+      class="admin__nav-item">
+      <span class="admin__nav-icon">{{ item.icon }}</span>
+      <span class="admin__nav-label" *ngIf="isSidebarOpen()">
+          {{ item.label }}
+        </span>
+      </a>
+    </nav>
+
+    <div class="admin__sidebar-footer">
+      <button class="admin__logout" (click)="authService.logout()">
+        <span>🚪</span>
+        <span *ngIf="isSidebarOpen()">Выйти</span>
+      </button>
+    </div>
+
+  </aside>
+
+
+  <div class="admin__content">
+
+
+    <header class="admin__topbar">
+      <h1 class="admin__page-title">Панель управления</h1>
+      <div class="admin__topbar-right">
+        <span class="admin__user">
+          👤 {{ authService.currentUser()?.email }}
+        </span>
+      </div>
+    </header>
+
+
+    <main class="admin__main">
+      <router-outlet />
+    </main>
+
+  </div>
+
+</div>

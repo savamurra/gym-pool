@@ -34,6 +34,18 @@ export const routes: Routes = [
             .then(m => m.BookingsComponent)
       },
       {
+        path: 'services',
+        loadComponent: () =>
+          import('./features/admin/services-manage/services-manage.component')
+            .then(m => m.ServicesManageComponent)
+      },
+      {
+        path: 'pricing',
+        loadComponent: () =>
+          import('./features/admin/pricing-manage/pricing-manage.component')
+            .then(m => m.PricingManageComponent)
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'

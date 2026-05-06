@@ -1,6 +1,7 @@
-import {Component, signal} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { BookingService } from '../../core/services/booking.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,8 +12,10 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 })
 export class ContactComponent {
 
-  isSubmitted = signal(false)
+  private bookingService = inject(BookingService)
+
   isSubmitting = signal(false)
+  isSubmitted = signal(false)
 
   form = new FormGroup({
     name: new FormControl('', [
@@ -50,11 +53,23 @@ export class ContactComponent {
 
     this.isSubmitting.set(true)
 
-    setTimeout(() => {
-      console.log('Форма отправлена:', this.form.value)
-      this.isSubmitting.set(false)
-      this.isSubmitted.set(true)
-      this.form.reset()
-    }, 1500)
+    this.bookingService.createBooking({
+      name: this.f.name.value!,
+      phone: this.f.phone.value!,
+      email: this.f.email.value!,
+      service: this.f.service.value!,
+      message: this.f.message.value || '',
+      status: 'new',
+      createdAt: new Date()
+    }).subscribe({
+      next: () => {
+        this.isSubmitting.set(false)
+        this.isSubmitted.set(true)
+        this.form.reset()
+      },
+      error: () => {
+        this.isSubmitting.set(false)
+      }
+    })
   }
 }
