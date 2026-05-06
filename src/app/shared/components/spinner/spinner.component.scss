@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.spinner-wrapper {
+  @include flex-center;
+  padding: $spacing-lg;
+
+  &--fullscreen {
+    position: fixed;
+    inset: 0;
+    background: rgba($dark, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    padding: 0;
+  }
+}
+
+.spinner {
+  border-radius: 50%;
+  border: 2px solid $border;
+  border-top-color: $accent;
+  animation: spin 0.7s linear infinite;
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--md {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+    border-width: 3px;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

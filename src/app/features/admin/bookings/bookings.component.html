@@ -1,1 +1,150 @@
-<p>bookings works!</p>
+<div class="bookings">
+
+
+  <div class="bookings__header">
+    <h2 class="bookings__title">Заявки</h2>
+  </div>
+
+
+  <div class="bookings__filters">
+    <button
+      *ngFor="let filter of filters"
+      class="bookings__filter"
+      [class.bookings__filter--active]="activeFilter() === filter.value"
+      (click)="setFilter(filter.value)">
+      {{ filter.label }}
+      <span class="bookings__filter-count">
+        {{ counts()[filter.value] }}
+      </span>
+    </button>
+  </div>
+
+  <app-spinner *ngIf="isLoading()" size="lg" />
+
+
+  <div class="bookings__empty" *ngIf="!isLoading() && filteredBookings().length === 0">
+    <span>📭</span>
+    <p>Заявок нет</p>
+  </div>
+
+
+  <div class="bookings__table-wrapper" *ngIf="!isLoading() && filteredBookings().length > 0">
+    <table class="bookings__table">
+      <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Услуга</th>
+        <th>Телефон</th>
+        <th>Email</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let booking of filteredBookings()"
+        (click)="selectBooking(booking)"
+        class="bookings__row">
+        <td>{{ booking.name }}</td>
+        <td>{{ getServiceLabel(booking.service) }}</td>
+        <td>{{ booking.phone }}</td>
+        <td>{{ booking.email }}</td>
+        <td>{{ booking.createdAt | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td>
+            <span
+              class="bookings__status"
+              [class]="'bookings__status--' + booking.status">
+              {{ getStatusLabel(booking.status) }}
+            </span>
+        </td>
+        <td>
+          <button
+            class="bookings__detail-btn"
+            (click)="$event.stopPropagation(); selectBooking(booking)">
+            →
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="bookings__overlay" *ngIf="selectedBooking()" (click)="closeDetail()">
+    <div class="bookings__detail" (click)="$event.stopPropagation()">
+
+      <div class="bookings__detail-header">
+        <h3 class="bookings__detail-title">Заявка от {{ selectedBooking()?.name }}</h3>
+        <button class="bookings__detail-close" (click)="closeDetail()">✕</button>
+      </div>
+
+      <div class="bookings__detail-body">
+
+        <div class="bookings__detail-row">
+          <span class="bookings__detail-label">Имя</span>
+          <span class="bookings__detail-value">{{ selectedBooking()?.name }}</span>
+        </div>
+
+        <div class="bookings__detail-row">
+          <span class="bookings__detail-label">Телефон</span>
+          <a [href]="'tel:' + selectedBooking()?.phone" class="bookings__detail-link">
+            {{ selectedBooking()?.phone }}
+          </a>
+        </div>
+
+        <div class="bookings__detail-row">
+          <span class="bookings__detail-label">Email</span>
+          <a [href]="'mailto:' + selectedBooking()?.email" class="bookings__detail-link">
+            {{ selectedBooking()?.email }}
+          </a>
+        </div>
+
+        <div class="bookings__detail-row">
+          <span class="bookings__detail-label">Услуга</span>
+          <span class="bookings__detail-value">
+            {{ getServiceLabel(selectedBooking()?.service || '') }}
+          </span>
+        </div>
+
+        <div class="bookings__detail-row" *ngIf="selectedBooking()?.message">
+          <span class="bookings__detail-label">Сообщение</span>
+          <span class="bookings__detail-value">{{ selectedBooking()?.message }}</span>
+        </div>
+
+        <div class="bookings__detail-row">
+          <span class="bookings__detail-label">Дата</span>
+          <span class="bookings__detail-value">
+            {{ selectedBooking()?.createdAt | date:'dd.MM.yyyy HH:mm' }}
+          </span>
+        </div>
+
+        <div class="bookings__detail-statuses">
+          <span class="bookings__detail-label">Статус</span>
+          <div class="bookings__status-btns">
+            <button
+              *ngFor="let status of statuses"
+              class="bookings__status-btn"
+              [class]="'bookings__status-btn--' + status.value"
+              [class.bookings__status-btn--active]="selectedBooking()?.status === status.value"
+              (click)="updateStatus(selectedBooking()!, status.value)">
+              {{ status.label }}
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="bookings__detail-footer">
+        <button
+          class="bookings__delete-btn"
+          (click)="deleteBooking(selectedBooking()!)">
+          🗑 Удалить заявку
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -4,11 +4,12 @@ import {BookingService} from '../../../core/services/booking.service';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {Booking, BookingStatus} from '../../../core/models/pool.models';
 import {RouterLink} from '@angular/router';
+import {SpinnerComponent} from '../../../shared/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, SpinnerComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -30,6 +31,9 @@ export class DashboardComponent {
 
   recentBookings = computed(() =>
   this.bookings().slice(0, 5))
+
+  isLoading = computed(() => this.bookings().length === 0)
+
 
   getStatusLabel(status: BookingStatus): string {
     const labels: Record<BookingStatus, string> = {
