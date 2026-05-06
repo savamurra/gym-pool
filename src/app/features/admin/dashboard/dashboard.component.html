@@ -1,1 +1,85 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+
+  <div class="dashboard__stats">
+
+    <div class="dashboard__stat-card">
+      <div class="dashboard__stat-icon">📋</div>
+      <div class="dashboard__stat-info">
+        <span class="dashboard__stat-number">{{ totalBookings() }}</span>
+        <span class="dashboard__stat-label">Всего заявок</span>
+      </div>
+    </div>
+
+    <div class="dashboard__stat-card dashboard__stat-card--new">
+      <div class="dashboard__stat-icon">🆕</div>
+      <div class="dashboard__stat-info">
+        <span class="dashboard__stat-number">{{ newBookings() }}</span>
+        <span class="dashboard__stat-label">Новых</span>
+      </div>
+    </div>
+
+    <div class="dashboard__stat-card dashboard__stat-card--confirmed">
+      <div class="dashboard__stat-icon">✅</div>
+      <div class="dashboard__stat-info">
+        <span class="dashboard__stat-number">{{ confirmedBookings() }}</span>
+        <span class="dashboard__stat-label">Подтверждено</span>
+      </div>
+    </div>
+
+    <div class="dashboard__stat-card dashboard__stat-card--cancelled">
+      <div class="dashboard__stat-icon">❌</div>
+      <div class="dashboard__stat-info">
+        <span class="dashboard__stat-number">{{ cancelledBookings() }}</span>
+        <span class="dashboard__stat-label">Отменено</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dashboard__recent">
+    <div class="dashboard__section-header">
+      <h2 class="dashboard__section-title">Последние заявки</h2>
+      <a routerLink="/admin/bookings" class="dashboard__see-all">
+        Все заявки →
+      </a>
+    </div>
+
+
+    <div class="dashboard__empty" *ngIf="bookings().length === 0">
+      <span>📭</span>
+      <p>Заявок пока нет</p>
+    </div>
+
+
+    <div class="dashboard__table-wrapper" *ngIf="bookings().length > 0">
+      <table class="dashboard__table">
+        <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Услуга</th>
+          <th>Телефон</th>
+          <th>Дата</th>
+          <th>Статус</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let booking of recentBookings()">
+          <td>{{ booking.name }}</td>
+          <td>{{ booking.service }}</td>
+          <td>{{ booking.phone }}</td>
+          <td>{{ booking.createdAt | date:'dd.MM.yyyy' }}</td>
+          <td>
+              <span
+                class="dashboard__status"
+                [class]="'dashboard__status--' + booking.status">
+                {{ getStatusLabel(booking.status) }}
+              </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
