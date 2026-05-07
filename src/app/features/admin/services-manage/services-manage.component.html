@@ -1,1 +1,64 @@
-<p>services-manage works!</p>
+<div class="services-manage">
+
+  <div class="services-manage__header">
+    <h2 class="services-manage__title">Услуги</h2>
+    <button class="services-manage__add-btn" (click)="openCreateForm()">
+      + Добавить услугу
+    </button>
+  </div>
+
+  <app-spinner *ngIf="isLoading()" size="lg" />
+
+  <div class="services-manage__empty"
+       *ngIf="!isLoading() && services().length === 0">
+    <span>📭</span>
+    <p>Услуг ещё нет</p>
+    <button class="services-manage__add-btn" (click)="openCreateForm()">
+      Создать первую услугу
+    </button>
+  </div>
+
+  <div class="services-manage__grid"
+       *ngIf="!isLoading() && services().length > 0">
+    <div
+      *ngFor="let service of services()"
+      class="services-manage__card">
+
+      <div class="services-manage__card-header">
+        <span class="services-manage__icon">{{ service.icon }}</span>
+        <span class="services-manage__order">#{{ service.order }}</span>
+      </div>
+
+      <h3 class="services-manage__card-title">{{ service.title }}</h3>
+      <p class="services-manage__card-description">{{ service.description }}</p>
+
+      <div class="services-manage__card-meta">
+        <span class="services-manage__meta-item">⏱ {{ service.duration }}</span>
+        <span class="services-manage__meta-item services-manage__price">
+          {{ service.price }} ₸
+        </span>
+      </div>
+
+      <div class="services-manage__card-actions">
+        <button
+          class="services-manage__btn services-manage__btn--edit"
+          (click)="openEditForm(service)">
+          ✏ Редактировать
+        </button>
+        <button
+          class="services-manage__btn services-manage__btn--delete"
+          (click)="deleteService(service)">
+          🗑
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <app-service-form
+    *ngIf="isFormOpen()"
+    [service]="editingService()"
+    (closed)="closeForm()"
+    (saved)="onSaved()" />
+
+</div>

@@ -1,10 +1,11 @@
 export interface PoolService {
-  id: number
+  id: string
   icon: string
   title: string
   description: string
   duration: string
   price: number
+  order: number
 }
 
 export interface Pricing {

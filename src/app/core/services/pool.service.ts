@@ -6,56 +6,56 @@ import {PoolService, Pricing} from '../models/pool.models';
   providedIn: 'root'
 })
 export class PoolDataService {
-  private servicesData = signal<PoolService[]>([
-    {
-      id: 1,
-      icon: '🏊',
-      title: 'Спортивное плавание',
-      description: 'Тренировки с профессиональным тренером для улучшения техники и скорости плавания',
-      duration: '60 мин',
-      price: 1500
-    },
-    {
-      id: 2,
-      icon: '💪',
-      title: 'Аквафитнес',
-      description: 'Групповые тренировки в воде для укрепления мышц и похудения без нагрузки на суставы',
-      duration: '45 мин',
-      price: 1200
-    },
-    {
-      id: 3,
-      icon: '🧘',
-      title: 'Аквайога',
-      description: 'Расслабляющие практики в воде для улучшения гибкости и снятия стресса',
-      duration: '60 мин',
-      price: 1300
-    },
-    {
-      id: 4,
-      icon: '👶',
-      title: 'Детское плавание',
-      description: 'Обучение детей плаванию с нуля в безопасной и комфортной атмосфере',
-      duration: '45 мин',
-      price: 1400
-    },
-    {
-      id: 5,
-      icon: '🤽',
-      title: 'Водное поло',
-      description: 'Командная игра в воде для развития выносливости и командного духа',
-      duration: '90 мин',
-      price: 1800
-    },
-    {
-      id: 6,
-      icon: '♾️',
-      title: 'Свободное плавание',
-      description: 'Самостоятельные тренировки в дорожке в удобное для вас время',
-      duration: '90 мин',
-      price: 800
-    }
-  ])
+  // private servicesData = signal<PoolService[]>([
+  //   {
+  //     id: 1,
+  //     icon: '🏊',
+  //     title: 'Спортивное плавание',
+  //     description: 'Тренировки с профессиональным тренером для улучшения техники и скорости плавания',
+  //     duration: '60 мин',
+  //     price: 1500
+  //   },
+  //   {
+  //     id: 2,
+  //     icon: '💪',
+  //     title: 'Аквафитнес',
+  //     description: 'Групповые тренировки в воде для укрепления мышц и похудения без нагрузки на суставы',
+  //     duration: '45 мин',
+  //     price: 1200
+  //   },
+  //   {
+  //     id: 3,
+  //     icon: '🧘',
+  //     title: 'Аквайога',
+  //     description: 'Расслабляющие практики в воде для улучшения гибкости и снятия стресса',
+  //     duration: '60 мин',
+  //     price: 1300
+  //   },
+  //   {
+  //     id: 4,
+  //     icon: '👶',
+  //     title: 'Детское плавание',
+  //     description: 'Обучение детей плаванию с нуля в безопасной и комфортной атмосфере',
+  //     duration: '45 мин',
+  //     price: 1400
+  //   },
+  //   {
+  //     id: 5,
+  //     icon: '🤽',
+  //     title: 'Водное поло',
+  //     description: 'Командная игра в воде для развития выносливости и командного духа',
+  //     duration: '90 мин',
+  //     price: 1800
+  //   },
+  //   {
+  //     id: 6,
+  //     icon: '♾️',
+  //     title: 'Свободное плавание',
+  //     description: 'Самостоятельные тренировки в дорожке в удобное для вас время',
+  //     duration: '90 мин',
+  //     price: 800
+  //   }
+  // ])
 
   private pricingData = signal<Pricing[]>([
     {
@@ -103,9 +103,9 @@ export class PoolDataService {
   ])
 
 
-  getServices() {
-    return this.servicesData()
-  }
+  // getServices() {
+  //   return this.servicesData()
+  // }
 
   getPricing() {
     return this.pricingData()

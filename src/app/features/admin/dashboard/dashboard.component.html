@@ -67,7 +67,7 @@
         <tbody>
         <tr *ngFor="let booking of recentBookings()">
           <td>{{ booking.name }}</td>
-          <td>{{ booking.service }}</td>
+          <td>{{ getServiceLabel(booking.service) }}</td>
           <td>{{ booking.phone }}</td>
           <td>{{ booking.createdAt | date:'dd.MM.yyyy' }}</td>
           <td>

@@ -1,0 +1,92 @@
+<div class="form-overlay" (click)="close()">
+  <div class="form-modal" (click)="$event.stopPropagation()">
+
+    <div class="form-modal__header">
+      <h3 class="form-modal__title">
+        {{ service() ? 'Редактировать услугу' : 'Новая услуга' }}
+      </h3>
+      <button class="form-modal__close" (click)="close()">✕</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-modal__body">
+
+      <div class="form-modal__row form-modal__row--icon-title">
+        <div class="form-modal__field">
+          <label class="form-modal__label">Иконка</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('icon')"
+            type="text"
+            placeholder="🏊"
+            formControlName="icon" />
+        </div>
+
+        <div class="form-modal__field">
+          <label class="form-modal__label">Название</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('title')"
+            type="text"
+            placeholder="Спортивное плавание"
+            formControlName="title" />
+        </div>
+      </div>
+
+      <div class="form-modal__field">
+        <label class="form-modal__label">Описание</label>
+        <textarea
+          class="form-modal__input form-modal__textarea"
+          [class.form-modal__input--error]="showError('description')"
+          placeholder="Опишите услугу..."
+          formControlName="description"
+          rows="3"></textarea>
+      </div>
+
+      <div class="form-modal__row">
+        <div class="form-modal__field">
+          <label class="form-modal__label">Длительность</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('duration')"
+            type="text"
+            placeholder="60 мин"
+            formControlName="duration" />
+        </div>
+
+        <div class="form-modal__field">
+          <label class="form-modal__label">Цена (₸)</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('price')"
+            type="number"
+            placeholder="1500"
+            formControlName="price" />
+        </div>
+
+        <div class="form-modal__field">
+          <label class="form-modal__label">Порядок</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('order')"
+            type="number"
+            placeholder="1"
+            formControlName="order" />
+        </div>
+      </div>
+
+      <div class="form-modal__actions">
+        <button type="button" class="form-modal__btn-cancel" (click)="close()">
+          Отмена
+        </button>
+        <button type="submit" class="form-modal__btn-save" [disabled]="isSubmitting">
+          <app-spinner *ngIf="isSubmitting" size="sm" />
+          <span *ngIf="!isSubmitting">
+            {{ service() ? 'Сохранить' : 'Создать' }}
+          </span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

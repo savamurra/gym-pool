@@ -35,6 +35,18 @@ export class DashboardComponent {
   isLoading = computed(() => this.bookings().length === 0)
 
 
+  getServiceLabel(service: string): string {
+    const services: Record<string, string> = {
+      'swimming': 'Спортивное плавание',
+      'aquafitness': 'Аквафитнес',
+      'aquayoga': 'Аквайога',
+      'kids': 'Детское плавание',
+      'polo': 'Водное поло',
+      'free': 'Свободное плавание',
+    }
+    return services[service] || service
+  }
+
   getStatusLabel(status: BookingStatus): string {
     const labels: Record<BookingStatus, string> = {
       'new': 'Новая',
