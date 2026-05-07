@@ -1,0 +1,109 @@
+<div class="form-overlay" (click)="close()">
+  <div class="form-modal" (click)="$event.stopPropagation()">
+
+    <div class="form-modal__header">
+      <h3 class="form-modal__title">
+        {{ pricing() ? 'Редактировать тариф' : 'Новый тариф' }}
+      </h3>
+      <button class="form-modal__close" (click)="close()">✕</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-modal__body">
+
+      <div class="form-modal__field">
+        <label class="form-modal__label">Название тарифа</label>
+        <input
+          class="form-modal__input"
+          [class.form-modal__input--error]="showError('title')"
+          type="text"
+          placeholder="Базовый"
+          formControlName="title"/>
+      </div>
+
+      <div class="form-modal__row">
+        <div class="form-modal__field">
+          <label class="form-modal__label">Цена (₸)</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('price')"
+            type="number"
+            placeholder="3990"
+            formControlName="price"/>
+        </div>
+
+        <div class="form-modal__field">
+          <label class="form-modal__label">Период</label>
+          <input
+            class="form-modal__input"
+            type="text"
+            placeholder="месяц"
+            formControlName="period"/>
+        </div>
+
+        <div class="form-modal__field">
+          <label class="form-modal__label">Порядок</label>
+          <input
+            class="form-modal__input"
+            [class.form-modal__input--error]="showError('order')"
+            type="number"
+            placeholder="1"
+            formControlName="order"/>
+        </div>
+      </div>
+
+      <div class="form-modal__checkbox">
+        <input
+          type="checkbox"
+          id="isPopular"
+          formControlName="isPopular"/>
+        <label for="isPopular">⭐ Отметить как популярный</label>
+      </div>
+
+      <div class="form-modal__features">
+        <div class="form-modal__features-header">
+          <label class="form-modal__label">Что входит в тариф</label>
+          <button type="button" class="form-modal__add-feature" (click)="addFeature()">
+            + Добавить
+          </button>
+        </div>
+
+        <div formArrayName="features" class="form-modal__features-list">
+          <div
+            *ngFor="let feature of featuresArray.controls; let i = index"
+            class="form-modal__feature-item">
+
+            <div class="form-modal__feature-row">
+              <input
+                class="form-modal__input"
+                [class.form-modal__input--error]="feature.invalid && feature.touched"
+                type="text"
+                placeholder="Например: Безлимитное плавание"
+                [formControlName]="i"/>
+              <button
+                type="button"
+                class="form-modal__remove-feature"
+                (click)="removeFeature(i)"
+                [disabled]="featuresArray.length === 1">
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-modal__actions">
+        <button type="button" class="form-modal__btn-cancel" (click)="close()">
+          Отмена
+        </button>
+        <button type="submit" class="form-modal__btn-save" [disabled]="isSubmitting">
+          <span *ngIf="isSubmitting">Создаем...</span>
+          <span *ngIf="!isSubmitting">
+            {{ pricing() ? 'Сохранить' : 'Создать' }}
+          </span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

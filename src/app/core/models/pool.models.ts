@@ -9,12 +9,13 @@ export interface PoolService {
 }
 
 export interface Pricing {
-  id: number
+  id: string
   title: string
   price: number
   period: string
   features: string[]
   isPopular: boolean
+  order: number
 }
 
 export interface Advantage {

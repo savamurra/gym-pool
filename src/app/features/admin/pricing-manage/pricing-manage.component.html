@@ -1,1 +1,73 @@
-<p>pricing-manage works!</p>
+<div class="pricing-manage">
+
+  <div class="pricing-manage__header">
+    <h2 class="pricing-manage__title">Тарифы</h2>
+    <button class="pricing-manage__add-btn" (click)="openCreateForm()">
+      + Добавить тариф
+    </button>
+  </div>
+
+  <app-spinner *ngIf="isLoading()" size="lg" />
+
+  <div class="pricing-manage__empty"
+       *ngIf="!isLoading() && plans().length === 0">
+    <span>📭</span>
+    <p>Тарифов ещё нет</p>
+    <button class="pricing-manage__add-btn" (click)="openCreateForm()">
+      Создать первый тариф
+    </button>
+  </div>
+
+  <div class="pricing-manage__grid"
+       *ngIf="!isLoading() && plans().length > 0">
+    <div
+      *ngFor="let plan of plans()"
+      class="pricing-manage__card"
+      [class.pricing-manage__card--popular]="plan.isPopular">
+
+      <div class="pricing-manage__card-header">
+        <div>
+          <span class="pricing-manage__order">#{{ plan.order }}</span>
+          <h3 class="pricing-manage__card-title">{{ plan.title }}</h3>
+        </div>
+        <span class="pricing-manage__badge" *ngIf="plan.isPopular">⭐ Популярный</span>
+      </div>
+
+      <div class="pricing-manage__price">
+        <span class="pricing-manage__price-amount">{{ plan.price | number }}</span>
+        <span class="pricing-manage__price-currency">₸</span>
+        <span class="pricing-manage__price-period">/ {{ plan.period }}</span>
+      </div>
+
+      <ul class="pricing-manage__features">
+        <li
+          *ngFor="let feature of plan.features"
+          class="pricing-manage__feature">
+          <span class="pricing-manage__check">✓</span>
+          {{ feature }}
+        </li>
+      </ul>
+
+      <div class="pricing-manage__card-actions">
+        <button
+          class="pricing-manage__btn pricing-manage__btn--edit"
+          (click)="openEditForm(plan)">
+          ✏ Редактировать
+        </button>
+        <button
+          class="pricing-manage__btn pricing-manage__btn--delete"
+          (click)="deletePlan(plan)">
+          🗑
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <app-pricing-form
+    *ngIf="isFormOpen()"
+    [pricing]="editingPlan()"
+    (closed)="closeForm()"
+    (saved)="onSaved()" />
+
+</div>
