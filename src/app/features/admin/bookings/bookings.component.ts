@@ -23,8 +23,13 @@ export class BookingsComponent {
     { initialValue: [] as Booking[] }
   )
 
-  isLoading = computed(() => this.bookings().length === 0)
+  isLoading = signal(true)
 
+  constructor() {
+    this.bookingService.getBookings().subscribe(() => {
+      this.isLoading.set(false)
+    })
+  }
 
   activeFilter = signal<FilterStatus>('all')
 

@@ -1,87 +1,132 @@
 <div class="dashboard">
 
-  <div class="dashboard__stats">
+  <app-spinner *ngIf="isLoading()" size="lg" />
 
-    <div class="dashboard__stat-card">
-      <div class="dashboard__stat-icon">📋</div>
-      <div class="dashboard__stat-info">
-        <span class="dashboard__stat-number">{{ totalBookings() }}</span>
-        <span class="dashboard__stat-label">Всего заявок</span>
+  <ng-container *ngIf="!isLoading()">
+
+    <div class="dashboard__kpi">
+
+      <div class="dashboard__kpi-card">
+        <span class="dashboard__kpi-icon">📋</span>
+        <div class="dashboard__kpi-info">
+          <span class="dashboard__kpi-value">{{ data().totalBookings }}</span>
+          <span class="dashboard__kpi-label">Всего заявок</span>
+        </div>
+      </div>
+
+      <div class="dashboard__kpi-card">
+        <span class="dashboard__kpi-icon">🆕</span>
+        <div class="dashboard__kpi-info">
+          <span class="dashboard__kpi-value">{{ data().todayBookings }}</span>
+          <span class="dashboard__kpi-label">Заявок сегодня</span>
+        </div>
+      </div>
+
+      <div class="dashboard__kpi-card">
+        <span class="dashboard__kpi-icon">📈</span>
+        <div class="dashboard__kpi-info">
+          <span class="dashboard__kpi-value">{{ data().conversionRate }}%</span>
+          <span class="dashboard__kpi-label">Конверсия</span>
+        </div>
+      </div>
+
+      <div class="dashboard__kpi-card">
+        <span class="dashboard__kpi-icon">💰</span>
+        <div class="dashboard__kpi-info">
+          <span class="dashboard__kpi-value">{{ data().potentialRevenue | number }}</span>
+          <span class="dashboard__kpi-label">Доход (сом)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dashboard__charts">
+
+      <div class="dashboard__chart-card dashboard__chart-card--wide">
+        <div class="dashboard__chart-header">
+          <h3 class="dashboard__chart-title">Заявки за 14 дней</h3>
+          <span class="dashboard__chart-subtitle">Динамика по дням</span>
+        </div>
+        <div class="dashboard__chart-body">
+          <canvas
+            baseChart
+            [type]="'line'"
+            [data]="lineChartData()"
+            [options]="lineChartOptions">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="dashboard__chart-card">
+        <div class="dashboard__chart-header">
+          <h3 class="dashboard__chart-title">По статусам</h3>
+          <span class="dashboard__chart-subtitle">Распределение заявок</span>
+        </div>
+        <div class="dashboard__chart-body">
+          <canvas
+            baseChart
+            [type]="'doughnut'"
+            [data]="doughnutChartData()"
+            [options]="doughnutChartOptions">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="dashboard__chart-card dashboard__chart-card--wide">
+        <div class="dashboard__chart-header">
+          <h3 class="dashboard__chart-title">🏆 Топ услуг</h3>
+          <span class="dashboard__chart-subtitle">Самые популярные</span>
+        </div>
+        <div class="dashboard__chart-body" *ngIf="data().byService.length > 0; else emptyServices">
+          <canvas
+            baseChart
+            [type]="'bar'"
+            [data]="barChartData()"
+            [options]="barChartOptions">
+          </canvas>
+        </div>
+        <ng-template #emptyServices>
+          <div class="dashboard__empty">
+            <span>📭</span>
+            <p>Заявок пока нет</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="dashboard__chart-card dashboard__quick-card">
+        <span class="dashboard__quick-icon">⚡</span>
+        <h3 class="dashboard__quick-title">Все заявки</h3>
+        <p class="dashboard__quick-text">
+          Управляй заявками, меняй статусы и связывайся с клиентами
+        </p>
+        <a routerLink="/admin/bookings" class="dashboard__quick-link">
+          Перейти →
+        </a>
+      </div>
+
+    </div>
+    <div class="dashboard__seed">
+      <div class="dashboard__seed-info">
+        <h4>🧪 Тестовые данные</h4>
+        <p *ngIf="seedMessage()">{{ seedMessage() }}</p>
+        <p *ngIf="!seedMessage()">Заполни проект тестовыми данными для проверки</p>
+      </div>
+      <div class="dashboard__seed-actions">
+        <button
+          class="dashboard__seed-btn"
+          (click)="seedAll()"
+          [disabled]="isSeeding()">
+          {{ isSeeding() ? 'Загружаю...' : '+ Заполнить' }}
+        </button>
+        <button
+          class="dashboard__seed-btn dashboard__seed-btn--danger"
+          (click)="clearBookings()"
+          [disabled]="isSeeding()">
+          🗑 Очистить заявки
+        </button>
       </div>
     </div>
 
-    <div class="dashboard__stat-card dashboard__stat-card--new">
-      <div class="dashboard__stat-icon">🆕</div>
-      <div class="dashboard__stat-info">
-        <span class="dashboard__stat-number">{{ newBookings() }}</span>
-        <span class="dashboard__stat-label">Новых</span>
-      </div>
-    </div>
-
-    <div class="dashboard__stat-card dashboard__stat-card--confirmed">
-      <div class="dashboard__stat-icon">✅</div>
-      <div class="dashboard__stat-info">
-        <span class="dashboard__stat-number">{{ confirmedBookings() }}</span>
-        <span class="dashboard__stat-label">Подтверждено</span>
-      </div>
-    </div>
-
-    <div class="dashboard__stat-card dashboard__stat-card--cancelled">
-      <div class="dashboard__stat-icon">❌</div>
-      <div class="dashboard__stat-info">
-        <span class="dashboard__stat-number">{{ cancelledBookings() }}</span>
-        <span class="dashboard__stat-label">Отменено</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="dashboard__recent">
-    <div class="dashboard__section-header">
-      <h2 class="dashboard__section-title">Последние заявки</h2>
-      <a routerLink="/admin/bookings" class="dashboard__see-all">
-        Все заявки →
-      </a>
-    </div>
-
-    <app-spinner *ngIf="isLoading()" size="lg" />
-
-
-    <div class="dashboard__empty" *ngIf="!isLoading() && bookings().length === 0">
-      <span>📭</span>
-      <p>Заявок пока нет</p>
-    </div>
-
-
-    <div class="dashboard__table-wrapper" *ngIf="!isLoading() && bookings().length > 0">
-      <table class="dashboard__table">
-        <thead>
-        <tr>
-          <th>Имя</th>
-          <th>Услуга</th>
-          <th>Телефон</th>
-          <th>Дата</th>
-          <th>Статус</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let booking of recentBookings()">
-          <td>{{ booking.name }}</td>
-          <td>{{ getServiceLabel(booking.service) }}</td>
-          <td>{{ booking.phone }}</td>
-          <td>{{ booking.createdAt | date:'dd.MM.yyyy' }}</td>
-          <td>
-              <span
-                class="dashboard__status"
-                [class]="'dashboard__status--' + booking.status">
-                {{ getStatusLabel(booking.status) }}
-              </span>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
+  </ng-container>
 
 </div>

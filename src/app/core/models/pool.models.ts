@@ -46,3 +46,33 @@ export interface Booking {
   status: BookingStatus
   createdAt: Date
 }
+
+export interface DayStats {
+  date: string
+  count: number
+}
+
+export interface ServiceStats {
+  title: string
+  count: number
+  revenue: number
+}
+
+export interface StatusStats {
+  new: number
+  processing: number
+  confirmed: number
+  cancelled: number
+}
+
+export interface AnalyticsData {
+  bookings: Booking[]
+  services: PoolService[]
+  totalBookings: number
+  todayBookings: number
+  conversionRate: number
+  potentialRevenue: number
+  byDay: DayStats[]
+  byService: ServiceStats[]
+  byStatus: StatusStats
+}
