@@ -46,6 +46,12 @@ export const routes: Routes = [
             .then(m => m.PricingManageComponent)
       },
       {
+        path: 'schedule',
+        loadComponent: () =>
+          import('./features/admin/schedule-settings/schedule-settings.component')
+            .then(m => m.ScheduleSettingsComponent)
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'

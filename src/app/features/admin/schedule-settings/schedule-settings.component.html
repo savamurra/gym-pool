@@ -1,0 +1,143 @@
+<div class="schedule">
+
+  <div class="schedule__header">
+    <h2 class="schedule__title">Настройки расписания</h2>
+    <p class="schedule__subtitle">
+      Настрой рабочие часы и интервалы для записи на занятия
+    </p>
+  </div>
+
+  <app-spinner *ngIf="isLoading()" size="lg" />
+
+  <form
+    *ngIf="!isLoading()"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="schedule__form">
+
+    <div class="schedule__section">
+      <h3 class="schedule__section-title">Рабочие дни</h3>
+      <p class="schedule__section-desc">
+        В какие дни недели можно записаться
+      </p>
+      <div class="schedule__days">
+        <button
+          *ngFor="let day of days"
+          type="button"
+          class="schedule__day"
+          [class.schedule__day--active]="isDayActive(day.value)"
+          (click)="toggleDay(day.value)">
+          {{ day.label }}
+        </button>
+      </div>
+    </div>
+
+    <div class="schedule__section">
+      <h3 class="schedule__section-title">Часы работы</h3>
+      <div class="schedule__row">
+        <div class="schedule__field">
+          <label class="schedule__label">Начало</label>
+          <input
+            class="schedule__input"
+            type="time"
+            formControlName="startTime" />
+        </div>
+
+        <div class="schedule__field">
+          <label class="schedule__label">Конец</label>
+          <input
+            class="schedule__input"
+            type="time"
+            formControlName="endTime" />
+        </div>
+
+        <div class="schedule__field">
+          <label class="schedule__label">Длительность слота (мин)</label>
+          <input
+            class="schedule__input"
+            type="number"
+            min="15"
+            step="15"
+            formControlName="slotDuration" />
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule__section">
+      <div class="schedule__section-header">
+        <div>
+          <h3 class="schedule__section-title">Перерывы</h3>
+          <p class="schedule__section-desc">
+            В это время записи недоступны (например обед)
+          </p>
+        </div>
+        <button
+          type="button"
+          class="schedule__add-btn"
+          (click)="addBreak()">
+          + Добавить
+        </button>
+      </div>
+
+      <div class="schedule__breaks">
+        <div
+          *ngFor="let breakSlot of breaksArray.controls; let i = index"
+          class="schedule__break-row">
+          <input
+            class="schedule__input"
+            type="time"
+            [formControl]="breakSlot" />
+          <button
+            type="button"
+            class="schedule__remove-btn"
+            (click)="removeBreak(i)">
+            ✕
+          </button>
+        </div>
+
+        <p
+          *ngIf="breaksArray.length === 0"
+          class="schedule__empty-text">
+          Перерывов нет
+        </p>
+      </div>
+    </div>
+
+    <div class="schedule__section">
+      <h3 class="schedule__section-title">Превью слотов</h3>
+      <p class="schedule__section-desc">
+        Так клиент будет видеть доступное время на лендинге
+      </p>
+      <div class="schedule__preview">
+        <span
+          *ngFor="let slot of previewSlots()"
+          class="schedule__slot">
+          {{ slot }}
+        </span>
+        <p
+          *ngIf="previewSlots().length === 0"
+          class="schedule__empty-text">
+          Нет доступных слотов с текущими настройками
+        </p>
+      </div>
+      <p class="schedule__count">
+        Всего слотов в день: <strong>{{ previewSlots().length }}</strong>
+      </p>
+    </div>
+
+    <div class="schedule__actions">
+      <p class="schedule__message" *ngIf="saveMessage()">
+        {{ saveMessage() }}
+      </p>
+      <button
+        type="submit"
+        class="schedule__submit"
+        [disabled]="isSaving()">
+        <span *ngIf="isSaving()" >Сохраняем...</span>
+        <span *ngIf="!isSaving()">Сохранить настройки</span>
+      </button>
+    </div>
+
+  </form>
+
+</div>

@@ -28,6 +28,7 @@ export class AdminShellComponent {
     { label: 'Заявки', icon: '📋', route: '/admin/bookings' },
     { label: 'Услуги', icon: '🏊', route: '/admin/services' },
     { label: 'Цены', icon: '💰', route: '/admin/pricing' },
+    { label: 'Расписание', icon: '🗓', route: '/admin/schedule' },
   ]
 
   toggleSidebar() {

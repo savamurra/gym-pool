@@ -45,6 +45,18 @@ export interface Booking {
   message: string
   status: BookingStatus
   createdAt: Date
+  date?: string
+  time?: string
+  duration?: number
+}
+
+export interface ScheduleSettings {
+  id?: string
+  workDays: number[]
+  startTime: string
+  endTime: string
+  slotDuration: number
+  breakSlots: string[]
 }
 
 export interface DayStats {
