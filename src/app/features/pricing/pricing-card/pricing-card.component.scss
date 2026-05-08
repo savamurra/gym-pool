@@ -4,44 +4,46 @@
 .pricing-card {
   padding: $spacing-lg;
   border-radius: 20px;
-  background: $dark-3;
-  border-color: $border;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   position: relative;
   transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 30px var(--shadow-light);
     transform: translateY(-4px);
   }
 
   &--popular {
-    background: $accent;
-    border-color: $accent;
+    background: var(--accent);
+    border-color: var(--accent);
 
     .pricing-card__title,
     .pricing-card__amount,
     .pricing-card__currency,
     .pricing-card__feature {
-      color: $dark;
+      color: var(--accent-contrast-text);
     }
 
     .pricing-card__period {
-      color: rgba($dark, 0.6);
+      color: var(--accent-contrast-muted);
     }
 
     .pricing-card__check {
-      background: rgba($dark, 0.15);
-      color: $dark;
+      background: var(--accent-contrast-subtle);
+      color: var(--accent-contrast-text);
     }
 
     .pricing-card__btn {
-      background: $dark;
-      color: $white;
+      background: var(--accent-contrast-text);
+      color: var(--accent);
+      border-color: transparent;
 
       &:hover {
-        background: darken($dark, 5%);
+        opacity: 0.9;
+        transform: translateY(-1px);
       }
     }
   }
@@ -51,8 +53,8 @@
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background: $accent;
-    color: $white;
+    background: var(--accent);
+    color: var(--accent-contrast-text);
     padding: 4px 16px;
     border-radius: 20px;
     font-size: 12px;
@@ -63,13 +65,13 @@
   &__header {
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-lg;
-    border-bottom: 1px solid rgba($border, 0.5);
+    border-bottom: 1px solid var(--border-half);
   }
 
   &__title {
     font-size: 18px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     margin-bottom: $spacing-md;
     letter-spacing: -0.3px;
   }
@@ -84,7 +86,7 @@
   &__amount {
     font-size: 42px;
     font-weight: 800;
-    color: $white;
+    color: var(--text-primary);
     letter-spacing: -2px;
     line-height: 1;
   }
@@ -92,13 +94,13 @@
   &__currency {
     font-size: 20px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     margin-bottom: 6px;
   }
 
   &__period {
     font-size: 13px;
-    color: $text-secondary;
+    color: var(--text-secondary);
   }
 
   &__features {
@@ -115,7 +117,7 @@
     align-items: center;
     gap: $spacing-sm;
     font-size: 14px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-weight: 500;
   }
 
@@ -123,8 +125,8 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba($accent, 0.15);
-    color: $accent;
+    background: var(--accent-medium);
+    color: var(--accent);
     @include flex-center;
     font-size: 11px;
     font-weight: 700;
@@ -134,9 +136,9 @@
   &__btn {
     display: block;
     text-align: center;
-    background: rgba($white, 0.1);
-    border: 1px solid $border;
-    color: $white;
+    background: var(--btn-default-bg);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
     padding: 14px;
     border-radius: 10px;
     text-decoration: none;
@@ -146,8 +148,9 @@
     margin-top: auto;
 
     &:hover {
-      background: $accent;
-      color: $dark;
+      background: var(--accent);
+      color: var(--accent-contrast-text);
+      border-color: var(--accent);
       transform: translateY(-1px);
     }
   }

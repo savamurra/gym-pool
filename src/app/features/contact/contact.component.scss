@@ -3,7 +3,7 @@
 
 .contact {
   padding: $spacing-xxl $spacing-lg;
-  background: $dark-2;
+  background: var(--bg-secondary);
 
   &__container {
     max-width: 1200px;
@@ -18,31 +18,30 @@
     }
   }
 
-
   &__badge {
     display: inline-block;
-    background: rgba($accent, 0.08);
-    color: $accent;
+    background: var(--accent-subtle);
+    color: var(--accent);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
     margin-bottom: $spacing-md;
-    border: 1px solid rgba($accent, 0.2);
+    border: 1px solid var(--accent-subtle-border);
   }
 
   &__title {
     font-size: clamp(28px, 3vw, 42px);
     font-weight: 800;
     letter-spacing: -1.5px;
-    color: $primary;
+    color: var(--text-primary);
     margin-bottom: $spacing-md;
     line-height: 1.2;
   }
 
   &__subtitle {
     font-size: 16px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: $spacing-xl;
   }
@@ -63,7 +62,7 @@
     font-size: 24px;
     width: 48px;
     height: 48px;
-    background: $dark-3;
+    background: var(--bg-tertiary);
     border-radius: 12px;
     @include flex-center;
     flex-shrink: 0;
@@ -71,23 +70,22 @@
 
   &__info-label {
     font-size: 12px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-weight: 500;
     margin-bottom: 2px;
   }
 
   &__info-value {
     font-size: 15px;
-    color: $primary;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
-
   &__right {
-    background: $dark-3;
+    background: var(--bg-tertiary);
     border-radius: 24px;
     padding: $spacing-lg;
-    border: 1px solid $border;
+    border: 1px solid var(--border);
   }
 
   &__form {
@@ -105,34 +103,34 @@
   &__label {
     font-size: 13px;
     font-weight: 600;
-    color: $primary;
+    color: var(--text-primary);
   }
 
   &__input {
     padding: 12px 16px;
     border-radius: 10px;
-    border: 1px solid $border;
-    background: $dark-2;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
     font-size: 14px;
     font-family: $font-main;
-    color: $white;
+    color: var(--text-primary);
     transition: all 0.2s ease;
     outline: none;
 
     &::placeholder {
-      color: $text-secondary;
+      color: var(--text-secondary);
     }
 
     &:focus {
-      border-color: $accent;
-      box-shadow: 0 0 0 3px rgba($accent, 0.15);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-medium);
     }
 
     &--error {
       border-color: #ef4444;
 
       &:focus {
-        box-shadow: 0 0 0 3px rgba(#ef4444, 0.1);
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
       }
     }
   }
@@ -158,8 +156,8 @@
   }
 
   &__submit {
-    background: $accent;
-    color: $dark-3;
+    background: var(--accent);
+    color: var(--accent-contrast-text);
     padding: 14px;
     border-radius: 10px;
     border: none;
@@ -171,7 +169,7 @@
     margin-top: $spacing-sm;
 
     &:hover:not(:disabled) {
-      background: lighten($accent, 10%);
+      background: var(--accent-hover);
       transform: translateY(-1px);
     }
 
@@ -180,7 +178,6 @@
       cursor: not-allowed;
     }
   }
-
 
   &__success {
     @include flex-center;
@@ -192,11 +189,11 @@
     h3 {
       font-size: 22px;
       font-weight: 700;
-      color: $white;
+      color: var(--text-primary);
     }
 
     p {
-      color: $text-secondary;
+      color: var(--text-secondary);
       font-size: 15px;
     }
   }
@@ -207,19 +204,19 @@
 
   &__success-btn {
     background: none;
-    border: 1px solid $border;
+    border: 1px solid var(--border);
     padding: 10px 24px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 500;
     font-family: $font-main;
     cursor: pointer;
-    color: $text-secondary;
+    color: var(--text-secondary);
     transition: all 0.2s ease;
 
     &:hover {
-      border-color: $accent;
-      color: $accent;
+      border-color: var(--accent);
+      color: var(--accent);
     }
   }
 }

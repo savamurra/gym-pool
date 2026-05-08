@@ -3,7 +3,7 @@
 
 .services {
   padding: $spacing-xxl $spacing-lg;
-  background: $dark;
+  background: var(--bg-primary);
 
   &__container {
     max-width: 1200px;
@@ -17,27 +17,27 @@
 
   &__badge {
     display: inline-block;
-    background: rgba($accent, 0.08);
-    color: $accent;
+    background: var(--accent-subtle);
+    color: var(--accent);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
     margin-bottom: $spacing-md;
-    border: 1px solid rgba($accent, 0.2);
+    border: 1px solid var(--accent-subtle-border);
   }
 
   &__title {
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 800;
     letter-spacing: -1.5px;
-    color: $primary;
+    color: var(--text-primary);
     margin-bottom: $spacing-sm;
   }
 
   &__subtitle {
     font-size: 16px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     max-width: 480px;
     margin: 0 auto;
     line-height: 1.6;
@@ -60,16 +60,16 @@
   &__card {
     padding: $spacing-lg;
     border-radius: 16px;
-    border: 1px solid $border;
-    background: $dark-3;
+    border: 1px solid var(--border);
+    background: var(--bg-tertiary);
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
 
     &--active {
-      border-color: $accent;
-      box-shadow: 0 8px 30px rgba($accent, 0.15);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--accent-medium);
       transform: translateY(-4px);
     }
   }
@@ -82,14 +82,14 @@
   &__card-title {
     font-size: 17px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     letter-spacing: -0.3px;
     margin-bottom: $spacing-sm;
   }
 
   &__card-description {
     font-size: 14px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: $spacing-lg;
   }
@@ -97,19 +97,19 @@
   &__card-footer {
     @include flex-between;
     padding-top: $spacing-md;
-    border-top: $border;
+    border-top: 1px solid var(--border);
     margin-top: auto;
   }
 
   &__card-duration {
     font-size: 13px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-weight: 500;
   }
 
   &__card-price {
     font-size: 14px;
     font-weight: 700;
-    color: $accent;
+    color: var(--accent);
   }
 }

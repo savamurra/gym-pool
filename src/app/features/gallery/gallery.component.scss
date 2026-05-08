@@ -3,7 +3,7 @@
 
 .gallery {
   padding: $spacing-xxl $spacing-lg;
-  background: $dark;
+  background: var(--bg-primary);
 
   &__container {
     max-width: 1200px;
@@ -17,27 +17,27 @@
 
   &__badge {
     display: inline-block;
-    background: rgba($accent, 0.08);
-    color: $accent;
+    background: var(--accent-subtle);
+    color: var(--accent);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
     margin-bottom: $spacing-md;
-    border: 1px solid rgba($accent, 0.2);
+    border: 1px solid var(--accent-subtle-border);
   }
 
   &__title {
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 800;
     letter-spacing: -1.5px;
-    color: $primary;
+    color: var(--text-primary);
     margin-bottom: $spacing-sm;
   }
 
   &__subtitle {
     font-size: 16px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     max-width: 480px;
     margin: 0 auto;
     line-height: 1.6;
@@ -47,7 +47,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $spacing-lg;
-
 
     @include responsive(tablet) {
       grid-template-columns: repeat(2, 1fr);
@@ -61,7 +60,7 @@
   &__modal {
     position: fixed;
     inset: 0;
-    background: rgba($dark, 0.9);
+    background: var(--modal-overlay);
     backdrop-filter: blur(8px);
     @include flex-center;
     z-index: 2000;
@@ -69,7 +68,7 @@
   }
 
   &__modal-content {
-    background: $dark-2;
+    background: var(--bg-secondary);
     border-radius: 24px;
     max-width: 480px;
     width: 100%;
@@ -84,18 +83,18 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $border;
-    background: $dark-3;
+    border: 1px solid var(--border);
+    background: var(--bg-tertiary);
     cursor: pointer;
     @include flex-center;
     font-size: 14px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     transition: all 0.2s ease;
     z-index: 1;
 
     &:hover {
-      background: $dark-2;
-      color: $white;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
     }
   }
 
@@ -113,13 +112,13 @@
 
   &__modal-info {
     padding: $spacing-lg;
-    background: $dark-2;
+    background: var(--bg-secondary);
   }
 
   &__modal-category {
     font-size: 11px;
     font-weight: 600;
-    color: $accent;
+    color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -127,7 +126,7 @@
   &__modal-title {
     font-size: 22px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
     margin-top: $spacing-sm;
   }

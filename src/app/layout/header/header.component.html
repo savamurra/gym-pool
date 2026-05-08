@@ -4,6 +4,7 @@
     <a href="#" class="header__logo">
       🏊 AquaGym
     </a>
+
     <nav class="header__nav">
       <a
         *ngFor="let link of navLinks"
@@ -12,14 +13,18 @@
         {{ link.label }}
       </a>
     </nav>
-    <a href="#contact" class="header__cta">
-      Записаться
-    </a>
-    <button class="header__burger" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+
+    <div class="header__end">
+      <app-theme-toggle />
+      <a href="#contact" class="header__cta">
+        Записаться
+      </a>
+      <button class="header__burger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
   </div>
   <div class="header__mobile-menu" *ngIf="isMenuOpen()">

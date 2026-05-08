@@ -15,6 +15,76 @@ html {
 body {
   font-family: $font-main;
   font-size: $font-size-base;
-  color: $text-primary;
-  background-color: $dark;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root,
+body.theme-dark {
+  --bg-primary: #050d18;
+  --bg-secondary: #0a1628;
+  --bg-tertiary: #0f2040;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-faint: rgba(255, 255, 255, 0.3);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-half: rgba(255, 255, 255, 0.04);
+  --accent: #4fc3f7;
+  --accent-hover: #81d4fa;
+  --accent-subtle: rgba(79, 195, 247, 0.08);
+  --accent-subtle-2: rgba(79, 195, 247, 0.1);
+  --accent-subtle-border: rgba(79, 195, 247, 0.2);
+  --accent-medium: rgba(79, 195, 247, 0.15);
+  --accent-dark-color: #0288d1;
+  --accent-contrast-text: #050d18;
+  --accent-contrast-muted: rgba(5, 13, 24, 0.6);
+  --accent-contrast-subtle: rgba(5, 13, 24, 0.15);
+  --btn-default-bg: rgba(255, 255, 255, 0.1);
+  --social-bg: rgba(255, 255, 255, 0.05);
+  --shadow-strong: rgba(0, 0, 0, 0.4);
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --header-bg: rgba(5, 13, 24, 0.7);
+  --mobile-menu-bg: rgba(5, 13, 24, 0.95);
+  --modal-overlay: rgba(5, 13, 24, 0.9);
+  --card-gradient-from: rgba(79, 195, 247, 0.15);
+  --card-gradient-to: rgba(15, 32, 64, 0.8);
+  --icon-bg: rgba(255, 255, 255, 0.06);
+  --input-bg: #0a1628;
+  --toggle-bg: rgba(255, 255, 255, 0.08);
+  --toggle-hover-bg: rgba(255, 255, 255, 0.15);
+}
+
+body.theme-light {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e4edf6;
+  --text-primary: #0d1b2e;
+  --text-secondary: rgba(13, 27, 46, 0.55);
+  --text-faint: rgba(13, 27, 46, 0.35);
+  --border: rgba(13, 27, 46, 0.1);
+  --border-half: rgba(13, 27, 46, 0.05);
+  --accent: #0288d1;
+  --accent-hover: #0277bd;
+  --accent-subtle: rgba(2, 136, 209, 0.08);
+  --accent-subtle-2: rgba(2, 136, 209, 0.1);
+  --accent-subtle-border: rgba(2, 136, 209, 0.2);
+  --accent-medium: rgba(2, 136, 209, 0.12);
+  --accent-dark-color: #01579b;
+  --accent-contrast-text: #ffffff;
+  --accent-contrast-muted: rgba(255, 255, 255, 0.7);
+  --accent-contrast-subtle: rgba(255, 255, 255, 0.15);
+  --btn-default-bg: rgba(13, 27, 46, 0.06);
+  --social-bg: rgba(13, 27, 46, 0.05);
+  --shadow-strong: rgba(13, 27, 46, 0.15);
+  --shadow-light: rgba(13, 27, 46, 0.06);
+  --header-bg: rgba(240, 244, 248, 0.8);
+  --mobile-menu-bg: rgba(240, 244, 248, 0.97);
+  --modal-overlay: rgba(13, 27, 46, 0.7);
+  --card-gradient-from: rgba(2, 136, 209, 0.1);
+  --card-gradient-to: rgba(228, 237, 246, 0.8);
+  --icon-bg: rgba(13, 27, 46, 0.06);
+  --input-bg: #f8fafc;
+  --toggle-bg: rgba(13, 27, 46, 0.08);
+  --toggle-hover-bg: rgba(13, 27, 46, 0.15);
 }

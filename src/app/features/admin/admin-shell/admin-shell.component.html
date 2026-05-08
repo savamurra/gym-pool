@@ -38,6 +38,7 @@
     <header class="admin__topbar">
       <h1 class="admin__page-title">Панель управления</h1>
       <div class="admin__topbar-right">
+        <app-theme-toggle />
         <span class="admin__user">
           👤 {{ authService.currentUser()?.email }}
         </span>

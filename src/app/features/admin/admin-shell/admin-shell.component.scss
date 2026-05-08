@@ -8,13 +8,13 @@ $topbar-height: 64px;
 .admin {
   display: flex;
   min-height: 100vh;
-  background: $dark;
+  background: var(--bg-primary);
 
   &__sidebar {
     width: $sidebar-width;
     min-height: 100vh;
-    background: $dark-2;
-    border-right: 1px solid $border;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -33,13 +33,13 @@ $topbar-height: 64px;
     @include flex-between;
     padding: 20px $spacing-md;
     height: $topbar-height;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var(--border);
   }
 
   &__logo {
     font-size: 16px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     white-space: nowrap;
   }
 
@@ -47,9 +47,9 @@ $topbar-height: 64px;
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: $dark-3;
-    border: 1px solid $border;
-    color: $text-secondary;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
     cursor: pointer;
     @include flex-center;
     font-size: 10px;
@@ -57,8 +57,8 @@ $topbar-height: 64px;
     flex-shrink: 0;
 
     &:hover {
-      border-color: $accent;
-      color: $accent;
+      border-color: var(--accent);
+      color: var(--accent);
     }
   }
 
@@ -75,7 +75,7 @@ $topbar-height: 64px;
     align-items: center;
     gap: $spacing-sm;
     padding: 10px $spacing-md;
-    color: $text-secondary;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -86,13 +86,13 @@ $topbar-height: 64px;
     border-radius: 8px;
 
     &:hover {
-      background: $dark-3;
-      color: $white;
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
     }
 
     &--active {
-      background: rgba($accent, 0.1);
-      color: $accent;
+      background: var(--accent-subtle-2);
+      color: var(--accent);
     }
   }
 
@@ -109,7 +109,7 @@ $topbar-height: 64px;
 
   &__sidebar-footer {
     padding: $spacing-md;
-    border-top: 1px solid $border;
+    border-top: 1px solid var(--border);
   }
 
   &__logout {
@@ -119,9 +119,9 @@ $topbar-height: 64px;
     width: 100%;
     padding: 10px $spacing-md;
     background: none;
-    border: 1px solid $border;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: 14px;
     font-family: $font-main;
     cursor: pointer;
@@ -152,8 +152,8 @@ $topbar-height: 64px;
     @include flex-between;
     height: $topbar-height;
     padding: 0 $spacing-lg;
-    background: $dark-2;
-    border-bottom: 1px solid $border;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -162,13 +162,19 @@ $topbar-height: 64px;
   &__page-title {
     font-size: 18px;
     font-weight: 700;
-    color: $white;
+    color: var(--text-primary);
     letter-spacing: -0.3px;
+  }
+
+  &__topbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
   }
 
   &__user {
     font-size: 13px;
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-weight: 500;
   }
 
