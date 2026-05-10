@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-type SpinnerSize = 'sm' | 'md' | 'lg'
+type SpinnerSize = 'sm' | 'md' | 'lg' | 'xs'
 
 @Component({
   selector: 'app-spinner',
@@ -13,4 +13,5 @@ type SpinnerSize = 'sm' | 'md' | 'lg'
 export class SpinnerComponent {
   size = input<SpinnerSize>('md')
   fullscreen = input<boolean>(false)
+  inline = input<boolean>(false)
 }

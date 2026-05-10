@@ -13,6 +13,13 @@
     z-index: 9999;
     padding: 0;
   }
+
+  &--inline {
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .spinner {
@@ -20,6 +27,11 @@
   border: 2px solid $border;
   border-top-color: $accent;
   animation: spin 0.7s linear infinite;
+
+  &--xs {
+    width: 14px;
+    height: 14px;
+  }
 
   &--sm {
     width: 16px;

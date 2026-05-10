@@ -43,7 +43,7 @@
         class="login__btn"
         type="submit"
         [disabled]="authService.isLoading()">
-        <app-spinner *ngIf="authService.isLoading()" size="sm" />
+        <app-spinner *ngIf="authService.isLoading()" size="xs" [inline]="true" />
         <span *ngIf="!authService.isLoading()">Войти</span>
       </button>
 
