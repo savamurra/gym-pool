@@ -1,0 +1,112 @@
+<div class="calendar">
+
+  <div class="calendar__header">
+    <h2 class="calendar__title">Календарь записей</h2>
+    <p class="calendar__subtitle">Все записи на услуги по дням</p>
+  </div>
+
+  <app-spinner *ngIf="isLoading()" size="lg" />
+
+  <div *ngIf="!isLoading()">
+
+    <div class="calendar__nav">
+      <button
+        type="button"
+        class="calendar__nav-btn"
+        [disabled]="!canGoPrev()"
+        (click)="prevPage()">
+        ←
+      </button>
+
+      <div class="calendar__days">
+        <button
+          *ngFor="let day of visibleDays()"
+          type="button"
+          class="calendar__day"
+          [class.calendar__day--today]="day.isToday"
+          [class.calendar__day--selected]="selectedDate() === day.date"
+          [class.calendar__day--has-bookings]="day.count > 0"
+          (click)="selectDay(day)">
+
+          <span class="calendar__day-label">{{ day.dayLabel }}</span>
+          <span class="calendar__day-date">{{ day.dateLabel }}</span>
+          <span class="calendar__day-month">{{ day.monthLabel }}</span>
+          <span class="calendar__day-count" *ngIf="day.count > 0">
+        {{ day.count }}
+      </span>
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="calendar__nav-btn"
+        [disabled]="!canGoNext()"
+        (click)="nextPage()">
+        →
+      </button>
+    </div>
+
+    <div class="calendar__nav-actions">
+      <button
+        type="button"
+        class="calendar__today-btn"
+        (click)="goToToday()"
+        [disabled]="page() === 0">
+        Сегодня
+      </button>
+    </div>
+
+    <div class="calendar__day-section" *ngIf="selectedDate()">
+
+      <h3 class="calendar__day-title">
+        {{ formatFullDate(selectedDate()!) }}
+      </h3>
+
+      <div class="calendar__empty" *ngIf="selectedDayBookings().length === 0">
+        <span>📭</span>
+        <p>Нет записей на этот день</p>
+      </div>
+
+      <div class="calendar__bookings" *ngIf="selectedDayBookings().length > 0">
+        <div
+          *ngFor="let booking of selectedDayBookings()"
+          class="calendar__booking"
+          [class]="'calendar__booking--' + booking.status">
+
+          <span class="calendar__booking-time">{{ booking.time }}</span>
+
+          <div class="calendar__booking-info">
+            <span class="calendar__booking-name">{{ booking.name }}</span>
+            <span class="calendar__booking-service">{{ booking.service }}</span>
+          </div>
+
+          <div class="calendar__booking-contacts">
+            <a [href]="'tel:' + booking.phone" class="calendar__booking-phone">
+              📞 {{ booking.phone }}
+            </a>
+          </div>
+
+          <span class="calendar__booking-status">
+            {{ getStatusLabel(booking.status) }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="calendar__hint" *ngIf="!selectedDate()">
+      👆 Выберите день из ленты чтобы увидеть записи
+    </p>
+
+    <div class="calendar__legacy" *ngIf="bookingsWithoutDate().length > 0">
+      <h3 class="calendar__legacy-title">
+        📥 Заявки без даты ({{ bookingsWithoutDate().length }})
+      </h3>
+      <p class="calendar__legacy-text">
+        Старые заявки которые были созданы до календаря
+      </p>
+    </div>
+
+  </div>
+
+</div>

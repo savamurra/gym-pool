@@ -25,6 +25,7 @@ export class AdminShellComponent {
 
   navItems: NavItem[] = [
     { label: 'Дашборд', icon: '📊', route: '/admin/dashboard' },
+    { label: 'Календарь', icon: '🗓', route: '/admin/calendar' },
     { label: 'Заявки', icon: '📋', route: '/admin/bookings' },
     { label: 'Услуги', icon: '🏊', route: '/admin/services' },
     { label: 'Цены', icon: '💰', route: '/admin/pricing' },

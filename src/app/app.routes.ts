@@ -52,6 +52,12 @@ export const routes: Routes = [
             .then(m => m.ScheduleSettingsComponent)
       },
       {
+        path: 'calendar',
+        loadComponent: () =>
+          import('./features/admin/calendar/calendar.component')
+            .then(m => m.CalendarComponent)
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'
