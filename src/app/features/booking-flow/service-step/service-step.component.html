@@ -1,0 +1,32 @@
+<div class="service-step">
+
+  <h3 class="service-step__title">Выберите услугу</h3>
+  <p class="service-step__subtitle">
+    Какое занятие вас интересует?
+  </p>
+
+  <app-spinner *ngIf="isLoading()" size="md" />
+
+  <div class="service-step__grid" *ngIf="!isLoading()">
+    <button
+      *ngFor="let service of services()"
+      class="service-step__card"
+      (click)="onSelect(service)">
+
+      <span class="service-step__icon">{{ service.icon }}</span>
+
+      <div class="service-step__card-content">
+        <h4 class="service-step__card-title">{{ service.title }}</h4>
+        <p class="service-step__card-description">{{ service.description }}</p>
+
+        <div class="service-step__card-meta">
+          <span class="service-step__duration">⏱ {{ service.duration }}</span>
+          <span class="service-step__price">{{ service.price }} сом</span>
+        </div>
+      </div>
+
+      <span class="service-step__arrow">→</span>
+    </button>
+  </div>
+
+</div>

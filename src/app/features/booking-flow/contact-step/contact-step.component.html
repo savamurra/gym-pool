@@ -1,0 +1,104 @@
+<div class="contact-step">
+
+  <button class="contact-step__back" (click)="onBack()">
+    ← Назад
+  </button>
+
+  <h3 class="contact-step__title">Ваши данные</h3>
+  <p class="contact-step__subtitle">
+    Заполните форму чтобы завершить запись
+  </p>
+
+  <div class="contact-step__summary">
+    <div class="contact-step__summary-row">
+      <span class="contact-step__summary-icon">{{ service().icon }}</span>
+      <div>
+        <span class="contact-step__summary-label">Услуга</span>
+        <span class="contact-step__summary-value">{{ service().title }}</span>
+      </div>
+      <span class="contact-step__summary-price">{{ service().price }} сом</span>
+    </div>
+
+    <div class="contact-step__summary-divider"></div>
+
+    <div class="contact-step__summary-row">
+      <span class="contact-step__summary-icon">📅</span>
+      <div>
+        <span class="contact-step__summary-label">Дата и время</span>
+        <span class="contact-step__summary-value">
+          {{ formatDate(date()) }}, {{ time() }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="contact-step__form">
+
+    <div class="contact-step__field">
+      <label class="contact-step__label">Имя *</label>
+      <input
+        class="contact-step__input"
+        [class.contact-step__input--error]="showError('name')"
+        type="text"
+        placeholder="Санжар"
+        formControlName="name" />
+      <span class="contact-step__error" *ngIf="showError('name')">
+        Введите имя (минимум 2 символа)
+      </span>
+    </div>
+
+    <div class="contact-step__row">
+      <div class="contact-step__field">
+        <label class="contact-step__label">Телефон *</label>
+        <input
+          class="contact-step__input"
+          [class.contact-step__input--error]="showError('phone')"
+          type="tel"
+          placeholder="+996 700 000 000"
+          formControlName="phone" />
+        <span class="contact-step__error" *ngIf="showError('phone')">
+          Неверный формат номера
+        </span>
+      </div>
+
+      <div class="contact-step__field">
+        <label class="contact-step__label">Email *</label>
+        <input
+          class="contact-step__input"
+          [class.contact-step__input--error]="showError('email')"
+          type="email"
+          placeholder="sanzhar@gmail.com"
+          formControlName="email" />
+        <span class="contact-step__error" *ngIf="showError('email')">
+          Неверный формат email
+        </span>
+      </div>
+    </div>
+
+    <div class="contact-step__field">
+      <label class="contact-step__label">Сообщение (необязательно)</label>
+      <textarea
+        class="contact-step__input contact-step__textarea"
+        placeholder="Любые вопросы или пожелания..."
+        formControlName="message"
+        rows="3"></textarea>
+    </div>
+
+    <p class="contact-step__notice">
+      💳 Оплата производится на месте в день занятия
+    </p>
+
+    <button
+      class="contact-step__submit"
+      type="submit"
+      [disabled]="isSubmitting()">
+      <app-spinner *ngIf="isSubmitting()" size="xs" [inline]="true" />
+      <span *ngIf="!isSubmitting()">Подтвердить запись</span>
+    </button>
+
+  </form>
+
+</div>

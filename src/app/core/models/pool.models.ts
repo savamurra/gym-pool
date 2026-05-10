@@ -88,3 +88,11 @@ export interface AnalyticsData {
   byService: ServiceStats[]
   byStatus: StatusStats
 }
+
+export interface DayAvailability {
+  date: string
+  isWorkDay: boolean
+  totalSlots: number
+  availableSlots: string[]
+  bookedSlots: string[]
+}

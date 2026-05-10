@@ -7,6 +7,7 @@ import {ServicesComponent} from '../../features/services/services.component';
 import {PricingComponent} from '../../features/pricing/pricing.component';
 import {GalleryComponent} from '../../features/gallery/gallery.component';
 import {ContactComponent} from '../../features/contact/contact.component';
+import {BookingFlowComponent} from '../../features/booking-flow/booking-flow.component';
 
 @Component({
   selector: 'app-landing',
@@ -18,7 +19,7 @@ import {ContactComponent} from '../../features/contact/contact.component';
     PricingComponent,
     GalleryComponent,
     ContactComponent,
-    FooterComponent],
+    FooterComponent, BookingFlowComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })

@@ -1,0 +1,65 @@
+<div class="calendar-step">
+
+  <button class="calendar-step__back" (click)="onBack()">
+    ← Назад
+  </button>
+
+  <h3 class="calendar-step__title">Выберите дату и время</h3>
+  <p class="calendar-step__subtitle">
+    Доступные слоты на ближайшие 14 дней
+  </p>
+
+  <app-spinner *ngIf="isLoading()" size="md" />
+
+  <div *ngIf="!isLoading()">
+
+    <div class="calendar-step__days">
+      <button
+        *ngFor="let day of days()"
+        type="button"
+        class="calendar-step__day"
+        [class.calendar-step__day--today]="day.isToday"
+        [class.calendar-step__day--inactive]="!day.isWorkDay || day.isFull"
+        [class.calendar-step__day--selected]="selectedDate() === day.date"
+        [disabled]="!day.isWorkDay || day.isFull"
+        (click)="selectDay(day)">
+
+        <span class="calendar-step__day-label">{{ day.dayLabel }}</span>
+        <span class="calendar-step__day-date">{{ day.dateLabel }}</span>
+        <span class="calendar-step__day-month">{{ day.monthLabel }}</span>
+
+        <span class="calendar-step__day-status" *ngIf="day.isWorkDay && !day.isFull">
+          {{ day.availableCount }} {{ day.availableCount === 1 ? 'слот' : 'слотов' }}
+        </span>
+        <span class="calendar-step__day-status calendar-step__day-status--full"
+              *ngIf="day.isWorkDay && day.isFull">
+          Занято
+        </span>
+        <span class="calendar-step__day-status calendar-step__day-status--off"
+              *ngIf="!day.isWorkDay">
+          Выходной
+        </span>
+
+      </button>
+    </div>
+
+    <div class="calendar-step__slots-section" *ngIf="selectedDate()">
+      <h4 class="calendar-step__slots-title">Свободное время</h4>
+      <div class="calendar-step__slots">
+        <button
+          *ngFor="let slot of selectedDaySlots()"
+          type="button"
+          class="calendar-step__slot"
+          (click)="selectSlot(slot)">
+          {{ slot }}
+        </button>
+      </div>
+    </div>
+
+    <p class="calendar-step__hint" *ngIf="!selectedDate()">
+      👆 Выберите день из календаря
+    </p>
+
+  </div>
+
+</div>
